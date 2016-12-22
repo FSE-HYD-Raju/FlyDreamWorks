@@ -1,0 +1,18 @@
+<html ng-app="AdminModule">
+<head>
+    <meta charset="utf-8">
+    <link href="../css/General/bootstrap.min.css" rel="stylesheet">
+<script src="../Scripts/Angualr/angular.min.js"></script>
+<script src="../Scripts/Angualr/angular-route.min.js"></script>
+  <script src="../Scripts/Application/admin.js"></script>
+  </head>
+<body ng-controller = "AdminHomeCtrl">
+<h1 align = "right"> User: {{user}}</h1>
+
+<a href="#/orderslist">Get Orders List</a>
+			<a href="#/addvehicle">Add New Vehicle</a>
+			<a href="#/vehicledetails">Avaliable Vehicles</a>
+			<a href="#/getallnewvehicles">New Vehicles</a>
+ <div ng-view></div>
+ </body>
+</html>
