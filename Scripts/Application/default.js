@@ -1,4 +1,4 @@
-﻿app.controller('defaultController', function ($scope, $location, $route,getEventsfact) {
+﻿app.controller('defaultController', function ($scope, $location, $route) {
 
     $scope.Route = function (path) {
         $location.path(path);
@@ -13,18 +13,7 @@
 
     ];
     $scope.route = $route;
-  getEventsfact.getAllUsedVehicles().success(function s1(res) {
-        $scope.Details = res;
- 	}).error(function e1(res) {
-        $location.path('/error');
-    });
-	
-	
-
 });
-
-
-
 
  app.directive('carousel', function($timeout) {
          return {
@@ -39,21 +28,21 @@
          }
       });
 	  
+app.controller('eventslistctrl',function($scope,geteventsfact){
+		geteventsfact.eventslistfun().success(function s1(res) {
+				$scope.Details = res;
+				alert(JSON.stringify(res));
+			}).error(function e1(res) {
+			});
+		}	
+		)
 	  
-
-
-
-app.factory("getEventsfact", function ($http) {
-    var fun = {};
-    fun.getAllUsedVehicles = function () {
-        return $http.get('services/LoginDemo?uname="admin"&password="admin"');
-    }  
-	return fun;
-
-});
-
-
-app.controller("bookonlinectrl",function()
-{
-console.log('sdn');
-});
+	  
+app.factory("geteventsfact",function($http){
+						var fun = {};
+			fun.eventslistfun = function () {
+				return $http.get('services/events');
+			}  
+			return fun;
+		})
+		

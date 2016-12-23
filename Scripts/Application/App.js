@@ -15,12 +15,15 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/contact', {
             templateUrl: 'Views/Contact.html',
             activetab: 'contact'
-
         }).when('/bookOnline', {
             templateUrl: 'Views/BookOnline.html',
             activetab: 'bookOnline',
 			controller: 'bookonlinectrl'
-        }).
+        }).when('/events',{
+			templateUrl: 'Views/Events.html',
+			activetab: 'events',
+			controller : 'eventslistctrl'
+		}).
         otherwise({
             redirectTo: 'home'
         });
