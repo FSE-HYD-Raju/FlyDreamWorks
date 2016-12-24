@@ -22,7 +22,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/events',{
 			templateUrl: 'Views/Events.html',
 			activetab: 'events',
-			controller : 'eventslistctrl'
+			controller : 'eventsPageCtrl'
 		}).
         otherwise({
             redirectTo: 'home'

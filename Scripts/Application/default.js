@@ -28,10 +28,11 @@
          }
       });
 	  
-app.controller('eventslistctrl',function($scope,geteventsfact){
+app.controller('eventsPageCtrl',function($scope,geteventsfact){
 		geteventsfact.eventslistfun().success(function s1(res) {
 				$scope.Details = res;
-				alert(JSON.stringify(res));
+				
+				console.log(JSON.stringify(res));
 			}).error(function e1(res) {
 			});
 		}	

@@ -22,7 +22,7 @@
 			getLoginDetails.login(data).success(function s1(res) {
 				$scope.Details = res;
 				localStorage.setItem('uname',res[0].user_name);
-				$window.location.href = '/FlyDreamsProject/adminviews/adminhome.html';		
+				$window.location.href = '/FlyDreamWorks/adminviews/adminhome.html';		
 			}).error(function e1(res) {
 			});
 		}
