@@ -5,7 +5,10 @@
 					templateUrl: '../adminviews/orderslist.html',
 					controller : 'orderslistctrl'
 				}).
-				otherwise({
+				when('/addevents',{
+				templateUrl: '../adminviews/addevents.html',
+				controller : 'addEventsCtrl'
+				}).otherwise({
 				  redirectTo: '/orderslist'
 			  });
 		}
@@ -71,3 +74,37 @@
 			}  
 			return fun;
 		})
+		
+		app.factory("addEventsFact",function($http)
+		{var fun = {};
+			fun.inserteventsfun = function (events) {
+				return $http.post('../services/insertEvents',events);
+			}  
+			return fun;
+		})
+		
+		app.controller("addEventsCtrl",function($scope,addEventsFact)
+		{
+		$scope.saveEvents = function(events){
+		events.created_by = localStorage.getItem('uname');
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+		if(dd<10){
+			dd='0'+dd;
+		}	 
+		if(mm<10){
+			mm='0'+mm;
+		} 
+		var today = yyyy+'-'+mm+'-'+dd;
+		events.created_date = today;
+		alert(JSON.stringify(events));
+		addEventsFact.inserteventsfun(events).success(function s1(res) {
+				$scope.Details = res;
+				alert(JSON.stringify(res));
+			}).error(function e1(res) {
+			});
+
+		}
+		});
