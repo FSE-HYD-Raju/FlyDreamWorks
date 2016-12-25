@@ -28,15 +28,18 @@
          }
       });
 	  
-app.controller('eventsPageCtrl',function($scope,geteventsfact){
+app.controller('eventsPageCtrl',function($scope,geteventsfact, $location){
 		geteventsfact.eventslistfun().success(function s1(res) {
-				$scope.Details = res;
-				
+				$scope.Events = res;				
 				console.log(JSON.stringify(res));
 			}).error(function e1(res) {
 			});
-		}	
-		)
+      $scope.eventSelected = function(event){
+	    localStorage.setItem("SelectedEvent", JSON.stringify(event));
+	  $scope.Route('eventDetailsPage');
+	  }		  
+		
+});
 	  
 	  
 app.factory("geteventsfact",function($http){
@@ -45,5 +48,19 @@ app.factory("geteventsfact",function($http){
 				return $http.get('services/events');
 			}  
 			return fun;
-		})
+		});
 		
+		
+app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
+		$scope.Event = JSON.parse(localStorage.getItem("SelectedEvent"));
+		console.log($scope.Event);
+});
+
+
+
+
+
+
+
+
+

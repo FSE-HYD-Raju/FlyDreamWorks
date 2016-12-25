@@ -1,6 +1,17 @@
-<h1>events</h1>
-dfvcnk
- m.dfv ,df
- 
- s m,dv .sdsd;ml
-  s,msd
+
+  <div class="container">
+  
+  <p > <h3 id="eventsPageTItle"> Let us know what fun is ahead in your life </h3> </p>
+  <hr>
+  <br>
+  <br>
+  
+  <div class="row" >
+  <div class="col-md-4" ng-repeat="event in Events" id="eventsPage">
+    <div id="eventsPagePanel" ng-click="eventSelected(event)" class="panel panel-primary" >
+      <div class="panel-heading"><p ng-bind="event.event_name"/></div>
+      <div class="panel-body"><p ng-bind="event.event_desc"/></div>
+    </div>
+    </div>
+  </div>
+</div>

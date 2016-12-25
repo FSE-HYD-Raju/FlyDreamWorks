@@ -10,19 +10,24 @@ app.config(['$routeProvider', function ($routeProvider) {
             activetab: 'home'
         }).when('/about', {
             templateUrl: 'Views/About.html',
+			controller: 'defaultController',
             activetab: 'about'
-
         }).when('/contact', {
             templateUrl: 'Views/Contact.html',
+			controller: 'defaultController',
             activetab: 'contact'
         }).when('/bookOnline', {
             templateUrl: 'Views/BookOnline.html',
-            activetab: 'bookOnline',
-			controller: 'bookonlinectrl'
+			controller: 'defaultController',
+			activetab: 'bookOnline',			
         }).when('/events',{
 			templateUrl: 'Views/Events.html',
+			controller : 'eventsPageCtrl',
 			activetab: 'events',
-			controller : 'eventsPageCtrl'
+		}).when('/eventDetailsPage',{
+			templateUrl: 'Views/eventDetailsPage.html',
+			controller : 'eventDetailsPageCtrl',
+			activetab: 'events',
 		}).
         otherwise({
             redirectTo: 'home'

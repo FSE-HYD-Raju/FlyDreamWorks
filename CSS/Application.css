@@ -66,3 +66,37 @@ div.menuItems:active {
 .aboutMe{
 
 }
+
+#eventsPageTItle{
+    text-align: -webkit-center;
+       color: rgba(123, 63, 39, 0.81)
+}
+
+#eventsPagePanel{
+    height: 150pt;
+}
+
+#eventsPagePanel:hover{
+    box-shadow: 11px 11px 25px #b3c5a2;
+}
+
+
+#eventsPage .panel-primary .panel-heading {
+text-align:center;
+background-color:rgba(11, 102, 105, 0.98);
+background-image:none;
+font-size: large;
+}
+
+#eventsDetailsPage{
+margin-top:2%;
+}
+
+#eventDetailsForm{
+  font-size:x-large;
+  font-family: cursive;
+}
+
+#eventsDetailsBookBtn{
+	margin-top:5%;
+}
