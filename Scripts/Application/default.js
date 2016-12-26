@@ -57,6 +57,24 @@ app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
 });
 
 
+app.factory("getcustcredentials",function($http){
+						var fun = {};
+			fun.custlogindets = function () {
+				return $http.get('services/CustomerLogin');
+			}  
+			return fun;
+		});
+
+
+app.controller('customerLoginCtrl',function($scope,getcustcredentials, $location){
+getcustcredentials.custlogindets().success(function s1(res) {
+				$scope.custcred = res;				
+				console.log(JSON.stringify(res));
+			}).error(function e1(res) {
+			});
+});
+
+
 
 
 

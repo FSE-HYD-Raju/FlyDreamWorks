@@ -107,6 +107,26 @@
 		}
 		
 		
+		private function CustomerLogin(){	
+			if($this->get_request_method() != "GET"){
+				$this->response('',406);
+			}
+			$uname =  $this->_request['uname'];
+			$password =   $this->_request['password'];
+			$query="SELECT user_name FROM customers where username = $uname and password=$password";
+			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
+
+			if($r->num_rows > 0){
+				$result = array();
+				while($row = $r->fetch_assoc()){
+					$result[] = $row;
+				}
+				$this->response($this->json($result), 200); // send user details
+			}
+			$this->response('nkmk',204);	// If no records "No Content" status
+		}
+		
+		
 		private function customer(){	
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
@@ -202,9 +222,7 @@
 			}
 		}
 	}
-	
 	// Initiiate Library
-	
 	$api = new API;
 	$api->processApi();
 ?>
