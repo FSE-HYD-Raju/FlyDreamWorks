@@ -1,4 +1,8 @@
-﻿app.controller('defaultController', function ($scope, $location, $route) {
+﻿
+(function(){
+	
+	
+app.controller('defaultController', function ($scope, $location, $route) {
 
     $scope.Route = function (path) {
         $location.path(path);
@@ -73,6 +77,19 @@ getcustcredentials.custlogindets().success(function s1(res) {
 			}).error(function e1(res) {
 			});
 });
+
+
+
+app.component("loginTab",{
+	templateUrl: "Views/LoginRegTab.html",
+	controllerAs: "loginmodel",
+	
+});
+
+
+}());
+
+
 
 
 

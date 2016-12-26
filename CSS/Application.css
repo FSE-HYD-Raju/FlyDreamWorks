@@ -27,7 +27,7 @@ div.menuItems:active {
 #menu {
     margin-top: 2%;
     margin-bottom: 2%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .carouselItems {
@@ -100,3 +100,14 @@ margin-top:2%;
 #eventsDetailsBookBtn{
 	margin-top:5%;
 }
+
+
+
+
+
+
+
+
+
+
+

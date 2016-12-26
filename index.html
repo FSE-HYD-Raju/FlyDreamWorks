@@ -13,7 +13,7 @@
 </head>
 <body ng-controller="defaultController" ng-cloak>
     <div id="menu">
-        <div class="row col-md-offset-2">
+        <div class="row col-md-offset-1 ">
             <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
                 <p><i class="fa fa-home" aria-hidden="true"></i> HOME</p>
             </div>
@@ -29,7 +29,11 @@
             <div class="menuItems col-md-2" ng-click="Route('bookOnline')" ng-class="{'myhover': route.current.activetab == 'bookOnline'}">
                 <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK ONLINE</p>
             </div>
+			<div class = "col-md-1">
+			<login-tab></login-tab>
+			</div>
         </div>
+		
     </div>
     
    <ng-view></ng-view>
