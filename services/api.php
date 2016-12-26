@@ -113,7 +113,7 @@
 			}
 			$uname =  $this->_request['uname'];
 			$password =   $this->_request['password'];
-			$query="SELECT user_name FROM customers where username = $uname and password=$password";
+			$query="SELECT username FROM customers where username = $uname and password=$password";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
