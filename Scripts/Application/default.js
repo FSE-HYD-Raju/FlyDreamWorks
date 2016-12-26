@@ -1,4 +1,8 @@
-﻿app.controller('defaultController', function ($scope, $location, $route) {
+﻿
+(function(){
+	
+	
+app.controller('defaultController', function ($scope, $location, $route) {
 
     $scope.Route = function (path) {
         $location.path(path);
@@ -55,6 +59,19 @@ app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
 		$scope.Event = JSON.parse(localStorage.getItem("SelectedEvent"));
 		console.log($scope.Event);
 });
+
+
+
+app.component("loginTab",{
+	templateUrl: "Views/LoginRegTab.html",
+	controllerAs: "loginmodel",
+	
+});
+
+
+}());
+
+
 
 
 
