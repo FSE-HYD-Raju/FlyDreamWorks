@@ -1,6 +1,5 @@
 ﻿
-(function(){
-	
+
 	
 app.controller('defaultController', function ($scope, $location, $route) {
 
@@ -64,13 +63,13 @@ app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
 app.factory("getcustcredentials",function($http){
 						var fun = {};
 			fun.custlogindets = function (rec) {
-			alert(rec.uname);
-			alert(rec.pwd);
 				return $http.get('services/CustomerLogin?uname="'+rec.uname+'"&password="'+rec.pwd+'"');
 			}  
 			return fun;
 		});
 
+
+		
 app.component("loginTab",{
 	templateUrl: "Views/LoginRegTab.html",
 	controllerAs: "loginModel",
@@ -83,6 +82,7 @@ app.controller('customerLoginCtrl',function($scope,getcustcredentials){
 
 this.username = "";
 this.password = "";
+
 this.custlogin = function()
 {
         // data.uname = $scope.uname;
@@ -97,10 +97,6 @@ this.custlogin = function()
 			 });
 }
 });
-
-
-
-}());
 
 
 
