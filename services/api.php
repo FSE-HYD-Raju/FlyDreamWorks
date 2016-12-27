@@ -147,9 +147,8 @@
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
 			}
-
 			$customer = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('customerName', 'email', 'city', 'address', 'country');
+			$column_names = array('cust_name','password','email_id','organization_name','phone_no');
 			$keys = array_keys($customer);
 			$columns = '';
 			$values = '';
