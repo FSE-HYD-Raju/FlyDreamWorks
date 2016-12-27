@@ -99,6 +99,27 @@ this.custlogin = function()
 });
 
 
+app.factory("addCustsFact",function($http)
+		{var fun = {};
+			fun.insertcustsfun = function (customers) {
+				return $http.post('/FlyDreamWorks/services/insertCustomer',customers);
+			}  
+			return fun;
+		})
+		
+		app.controller("addCustsCtrl",function($scope,addCustsFact)
+		{
+		$scope.saveCustomer = function(customer){
+		alert(JSON.stringify(customer));
+		 addCustsFact.insertcustsfun(customer).success(function s1(res) {
+				 $scope.Details = res;
+				alert(JSON.stringify(res));
+			 }).error(function e1(res) {
+			 });
+
+		}
+		});
+
 
 
 

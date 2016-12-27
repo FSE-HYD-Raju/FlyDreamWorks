@@ -28,8 +28,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'Views/eventDetailsPage.html',
 			controller : 'eventDetailsPageCtrl',
 			activetab: 'events',
-		}).
-        otherwise({
+		}).when('/custRegister',{
+			templateUrl: 'Views/registerPage.html',
+			controller: 'addCustsCtrl'
+		}).otherwise({
             redirectTo: 'home'
         });
 }]);
