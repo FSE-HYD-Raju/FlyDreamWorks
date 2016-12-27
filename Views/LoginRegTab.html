@@ -10,14 +10,14 @@
                             Login
                         </div>
                         <div class="col-sm-12">
-                            <input type="text" placeholder="Uname or Email" onclick="return false;" class="form-control input-sm" id="inputError" />
+                            <input type="text" placeholder="Uname or Email" ng-model="loginModel.username"  class="form-control input-sm" id="inputError" />
                         </div>
                         <br/>
                         <div class="col-sm-12">
-                            <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
+                            <input type="password" placeholder="Password" ng-model = "loginModel.password" class="form-control input-sm" name="password" id="Password1" />
                         </div>
                         <div class="col-sm-12">
-                            <button type="button" ng-click = "custlogin()"   class="btn btn-success btn-sm">Sign in</button>
+                            <button type="button" ng-click = "loginModel.custlogin()"   class="btn btn-success btn-sm">Sign in</button>
                         </div>
                     </div>
                 </div>

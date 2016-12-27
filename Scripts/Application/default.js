@@ -60,12 +60,43 @@ app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
 		console.log($scope.Event);
 });
 
+
+app.factory("getcustcredentials",function($http){
+						var fun = {};
+			fun.custlogindets = function (rec) {
+			alert(rec.uname);
+			alert(rec.pwd);
+				return $http.get('services/CustomerLogin?uname="'+rec.uname+'"&password="'+rec.pwd+'"');
+			}  
+			return fun;
+		});
+
 app.component("loginTab",{
 	templateUrl: "Views/LoginRegTab.html",
-	controllerAs: "customerLoginCtrl",
+	controllerAs: "loginModel",
+	controller: "customerLoginCtrl"
 	
 });
 
+app.controller('customerLoginCtrl',function($scope,getcustcredentials){
+
+
+this.username = "";
+this.password = "";
+this.custlogin = function()
+{
+        // data.uname = $scope.uname;
+		// data.pwd = $scope.pwd;
+		var data = {};
+		data.uname = this.username;
+		data.pwd = this.password;
+ getcustcredentials.custlogindets(data).success(function s1(res) {
+				 $scope.Custcred = res;				
+				 console.log(JSON.stringify(res));
+			 }).error(function e1(res) {
+			 });
+}
+});
 
 
 
