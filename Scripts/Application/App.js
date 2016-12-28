@@ -19,7 +19,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/bookOnline', {
             templateUrl: 'Views/BookOnline.html',
 			controller: 'defaultController',
-			activetab: 'bookOnline',			
+			activetab: 'bookOnline',
         }).when('/events',{
 			templateUrl: 'Views/Events.html',
 			controller : 'eventsPageCtrl',
@@ -35,8 +35,3 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: 'home'
         });
 }]);
-
-
-
-
-
