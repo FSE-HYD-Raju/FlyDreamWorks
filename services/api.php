@@ -68,6 +68,64 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
+<<<<<<< HEAD
+
+		private function getorderslist(){
+=======
+		private function unseenOrdersCount(){	
+			if($this->get_request_method() != "GET"){
+				$this->response('',406);
+			}
+			$query="SELECT count(*) cnt FROM orders where approved is null";
+			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
+
+			if($r->num_rows > 0){
+				$result = array();
+				while($row = $r->fetch_assoc()){
+					$result[] = $row;
+				}
+				$this->response($this->json($result), 200); // send user details
+			}
+			$this->response('',204);	// If no records "No Content" status
+		}
+		
+		private function unapprovedOrdersCount(){	
+>>>>>>> 0f18b1e328ac7c28a6eaf8a4eb3625495df0c90c
+			if($this->get_request_method() != "GET"){
+				$this->response('',406);
+			}
+			$query="SELECT count(*) cnt FROM orders where approved = 'N'";
+			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
+
+			if($r->num_rows > 0){
+				$result = array();
+				while($row = $r->fetch_assoc()){
+					$result[] = $row;
+				}
+				$this->response($this->json($result), 200); // send user details
+			}
+			$this->response('',204);	// If no records "No Content" status
+		}
+<<<<<<< HEAD
+=======
+		
+		
+		private function approvedOrdersCount(){	
+			if($this->get_request_method() != "GET"){
+				$this->response('',406);
+			}
+			$query="SELECT count(*) cnt FROM orders where approved = 'Y'";
+			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
+
+			if($r->num_rows > 0){
+				$result = array();
+				while($row = $r->fetch_assoc()){
+					$result[] = $row;
+				}
+				$this->response($this->json($result), 200); // send user details
+			}
+			$this->response('',204);	// If no records "No Content" status
+		}
 
 		private function getorderslist(){
 			if($this->get_request_method() != "GET"){
@@ -85,6 +143,7 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
+>>>>>>> 0f18b1e328ac7c28a6eaf8a4eb3625495df0c90c
 
 
 		private function Logindemo(){
@@ -111,9 +170,9 @@
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			$uname =  $this->_request['uname'];
+			$email =  $this->_request['email'];
 			$password =   $this->_request['password'];
-			$query="SELECT email_id FROM customers where email_id = $uname and password=$password";
+			$query="SELECT * FROM customers where email_id = $email and password=$password";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
@@ -148,7 +207,7 @@
 				$this->response('',406);
 			}
 			$customer = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('cust_name','password','email_id','organization_name','phone_no');
+			$column_names = array('cust_name','password','email_id','organization_name','phoneNumber');
 			$keys = array_keys($customer);
 			$columns = '';
 			$values = '';
@@ -176,7 +235,7 @@
 			}
 
 			$events = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('event_name', 'event_desc', 'created_by', 'created_date');
+			$column_names = array('event_name', 'event_desc','PriceDesc','Contact', 'created_by', 'created_date');
 			$keys = array_keys($events);
 			$columns = '';
 			$values = '';
@@ -198,7 +257,36 @@
 				$this->response('',204);	//"No Content" status
 		}
 
+<<<<<<< HEAD
 
+=======
+private function insertorders(){
+			if($this->get_request_method() != "POST"){
+				$this->response('',406);
+			}
+			$events = json_decode(file_get_contents("php://input"),true);
+			$column_names = array('event_id','event_date','event_time','event_place','cust_id', 'state','city','pincode');
+			$keys = array_keys($events);
+			$columns = '';
+			$values = '';
+			foreach($column_names as $desired_key){ // Check the events received. If blank insert blank into the array.
+			   if(!in_array($desired_key, $keys)) {
+			   		$$desired_key = '';
+				}else{
+					$$desired_key = $events[$desired_key];
+				}
+				$columns = $columns.$desired_key.',';
+				$values = $values."'".$$desired_key."',";
+			}
+			$query = "INSERT INTO orders(".trim($columns,',').") VALUES(".trim($values,',').")";
+			if(!empty($events)){
+				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
+				$success = array('status' => "Success", "msg" => "event Created Successfully.", "data" => $events);
+				$this->response($this->json($success),200);
+			}else
+				$this->response('',204);	//"No Content" status
+		}
+>>>>>>> 0f18b1e328ac7c28a6eaf8a4eb3625495df0c90c
 		private function updateStatus()
 		{
 		if($this->get_request_method() != "GET"){

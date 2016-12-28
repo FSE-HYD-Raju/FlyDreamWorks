@@ -1,6 +1,6 @@
 ﻿
 
-	
+
 app.controller('defaultController', function ($scope, $location, $route) {
 
     $scope.Route = function (path) {
@@ -26,34 +26,35 @@ app.controller('defaultController', function ($scope, $location, $route) {
             },
             templateUrl: 'Views/carousel.html',
             link: function(scope, element) {
-             
+
             }
          }
       });
-	  
+
 app.controller('eventsPageCtrl',function($scope,geteventsfact, $location){
 		geteventsfact.eventslistfun().success(function s1(res) {
-				$scope.Events = res;				
+				$scope.Events = res;
 				console.log(JSON.stringify(res));
 			}).error(function e1(res) {
 			});
       $scope.eventSelected = function(event){
 	    localStorage.setItem("SelectedEvent", JSON.stringify(event));
 	  $scope.Route('eventDetailsPage');
-	  }		  
-		
+	  }
+
 });
-	  
-	  
+
+
+
 app.factory("geteventsfact",function($http){
 						var fun = {};
 			fun.eventslistfun = function () {
 				return $http.get('services/events');
-			}  
+			}
 			return fun;
 		});
-		
-		
+
+
 app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
 		$scope.Event = JSON.parse(localStorage.getItem("SelectedEvent"));
 		console.log($scope.Event);
@@ -64,17 +65,17 @@ app.factory("getcustcredentials",function($http){
 						var fun = {};
 			fun.custlogindets = function (rec) {
 				return $http.get('services/CustomerLogin?uname="'+rec.uname+'"&password="'+rec.pwd+'"');
-			}  
+			}
 			return fun;
 		});
 
 
-		
+
 app.component("loginTab",{
 	templateUrl: "Views/LoginRegTab.html",
 	controllerAs: "loginModel",
 	controller: "customerLoginCtrl"
-	
+
 });
 
 app.controller('customerLoginCtrl',function($scope,getcustcredentials){
@@ -91,7 +92,7 @@ this.custlogin = function()
 		data.uname = this.username;
 		data.pwd = this.password;
  getcustcredentials.custlogindets(data).success(function s1(res) {
-				 $scope.Custcred = res;				
+				 $scope.Custcred = res;
 				 console.log(JSON.stringify(res));
 			 }).error(function e1(res) {
 			 });
@@ -103,10 +104,10 @@ app.factory("addCustsFact",function($http)
 		{var fun = {};
 			fun.insertcustsfun = function (customers) {
 				return $http.post('/FlyDreamWorks/services/insertCustomer',customers);
-			}  
+			}
 			return fun;
 		})
-		
+
 		app.controller("addCustsCtrl",function($scope,addCustsFact)
 		{
 		$scope.saveCustomer = function(customer){
@@ -121,6 +122,27 @@ app.factory("addCustsFact",function($http)
 		});
 
 
+app.factory("addOrdersFact",function($http)
+		{var fun = {};
+			fun.insertordersfun = function (order) {
+				return $http.post('/FlyDreamWorks/services/insertOrders',order);
+			}
+			return fun;
+		})
+
+app.controller("addOrdersCtrl",function($scope,addOrdersFact)
+		{
+		$scope.saveOrders = function(order){
+		 order.event_id = 1;
+		order.cust_id = 1;
+		alert(JSON.stringify(order));
+		 addOrdersFact.insertordersfun(order).success(function s1(res) {
+				 $scope.Details = res;
+				 alert(JSON.stringify(res));
+			 }).error(function e1(res) {
+			 });
+		 }
+		});
 
 
 
@@ -129,3 +151,53 @@ app.factory("addCustsFact",function($http)
 
 
 
+
+
+
+// app.component("loginTab",{
+// 	templateUrl: "Views/LoginRegTab.html",
+// 	controllerAs: "loginModel",
+// 	controller: "customerLoginCtrl"
+//
+// });
+//
+// app.controller('customerLoginCtrl',function($scope,getcustcredentials){
+//
+//
+// this.username = "";
+// this.password = "";
+//
+// this.custlogin = function()
+// {
+//         // data.uname = $scope.uname;
+// 		// data.pwd = $scope.pwd;
+// 		var data = {};
+// 		data.uname = this.username;
+// 		data.pwd = this.password;
+//  getcustcredentials.custlogindets(data).success(function s1(res) {
+// 				 $scope.Custcred = res;
+// 				 console.log(JSON.stringify(res));
+// 			 }).error(function e1(res) {
+// 			 });
+// }
+// });
+// app.factory("addCustsFact",function($http)
+// 		{var fun = {};
+// 			fun.insertcustsfun = function (customers) {
+// 				return $http.post('/FlyDreamWorks/services/insertCustomer',customers);
+// 			}
+// 			return fun;
+// 		})
+//
+// 		app.controller("addCustsCtrl",function($scope,addCustsFact)
+// 		{
+// 		$scope.saveCustomer = function(customer){
+// 		alert(JSON.stringify(customer));
+// 		 addCustsFact.insertcustsfun(customer).success(function s1(res) {
+// 				 $scope.Details = res;
+// 				alert(JSON.stringify(res));
+// 			 }).error(function e1(res) {
+// 			 });
+//
+// 		}
+// 		});
