@@ -249,7 +249,32 @@
 				$this->response('',204);	//"No Content" status
 		}
 
-
+private function insertorders(){
+			if($this->get_request_method() != "POST"){
+				$this->response('',406);
+			}
+			$events = json_decode(file_get_contents("php://input"),true);
+			$column_names = array('event_id','event_date','event_time','event_place','cust_id', 'state','city','pincode');
+			$keys = array_keys($events);
+			$columns = '';
+			$values = '';
+			foreach($column_names as $desired_key){ // Check the events received. If blank insert blank into the array.
+			   if(!in_array($desired_key, $keys)) {
+			   		$$desired_key = '';
+				}else{
+					$$desired_key = $events[$desired_key];
+				}
+				$columns = $columns.$desired_key.',';
+				$values = $values."'".$$desired_key."',";
+			}
+			$query = "INSERT INTO orders(".trim($columns,',').") VALUES(".trim($values,',').")";
+			if(!empty($events)){
+				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
+				$success = array('status' => "Success", "msg" => "event Created Successfully.", "data" => $events);
+				$this->response($this->json($success),200);
+			}else
+				$this->response('',204);	//"No Content" status
+		}
 		private function updateStatus()
 		{
 		if($this->get_request_method() != "GET"){
