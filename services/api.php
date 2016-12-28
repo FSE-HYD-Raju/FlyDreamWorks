@@ -1,10 +1,10 @@
 <?php
  	require_once("Rest.inc.php");
-	
+
 	class API extends REST {
-	
+
 		public $data = "";
-		
+
 		const DB_SERVER = "localhost";
 		const DB_USER = "root";
 		const DB_PASSWORD = "";
@@ -16,14 +16,14 @@
 			parent::__construct();				// Init parent contructor
 			$this->dbConnect();					// Initiate Database connection
 		}
-		
+
 		/*
 		 *  Connect to Database
 		*/
 		private function dbConnect(){
 			$this->mysqli = new mysqli(self::DB_SERVER, self::DB_USER, self::DB_PASSWORD, self::DB);
 		}
-		
+
 		/*
 		 * Dynmically call the method based on the query string
 		 */
@@ -34,8 +34,8 @@
 			else
 				$this->response('',404); // If the method not exist with in this class "Page not found".
 		}
-		
-		private function customers(){	
+
+		private function customers(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -51,8 +51,8 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		private function events(){	
+
+		private function events(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -68,6 +68,7 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
+<<<<<<< HEAD
 		
 		private function unseenOrdersCount(){	
 			if($this->get_request_method() != "GET"){
@@ -122,6 +123,10 @@
 		}
 		
 		private function getorderslist(){	
+=======
+
+		private function getorderslist(){
+>>>>>>> f4ef89aefb36235775947b9e2e66047ce704a0c0
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -137,9 +142,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		
-		private function Logindemo(){	
+
+
+		private function Logindemo(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -157,15 +162,15 @@
 			}
 			$this->response('nkmk',204);	// If no records "No Content" status
 		}
-		
-		
-		private function CustomerLogin(){	
+
+
+		private function CustomerLogin(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 			$uname =  $this->_request['uname'];
 			$password =   $this->_request['password'];
-			$query="SELECT email_id FROM customers where email_id = $uname and password=$password";
+			$query="SELECT cust_name FROM customers where email_id = $uname and password=$password";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
@@ -177,24 +182,24 @@
 			}
 			$this->response('nkmk',204);	// If no records "No Content" status
 		}
-		
-		
-		private function customer(){	
+
+
+		private function customer(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 			$id = (int)$this->_request['id'];
-			if($id > 0){	
+			if($id > 0){
 				$query="SELECT distinct c.customerNumber, c.customerName, c.email, c.address, c.city, c.state, c.postalCode, c.country FROM customers c where c.customerNumber=$id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				if($r->num_rows > 0) {
-					$result = $r->fetch_assoc();	
+					$result = $r->fetch_assoc();
 					$this->response($this->json($result), 200); // send user details
 				}
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
+
 		private function insertCustomer(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
@@ -221,7 +226,7 @@
 			}else
 				$this->response('',204);	//"No Content" status
 		}
-		
+
 		private function insertEvents(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
@@ -249,8 +254,8 @@
 			}else
 				$this->response('',204);	//"No Content" status
 		}
-		
-		
+
+
 		private function updateStatus()
 		{
 		if($this->get_request_method() != "GET"){
@@ -262,8 +267,8 @@
 				$success = array('status' => "Success", "msg" => "order ".$order_num." Updated Successfully.");
 				$this->response($this->json($success),200);
 		}
-		
-		
+
+
 		/*
 		 *	Encode array into JSON
 		*/

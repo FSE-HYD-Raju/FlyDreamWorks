@@ -8,7 +8,7 @@
     <link href="CSS/General/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="CSS/General/font-awesome.min.css" rel="stylesheet" />
     <link href="CSS/Application.css" rel="stylesheet" />
-
+  
 
 </head>
 <body ng-controller="defaultController" ng-cloak>
@@ -29,18 +29,20 @@
             <div class="menuItems col-md-2" ng-click="Route('bookOnline')" ng-class="{'myhover': route.current.activetab == 'bookOnline'}">
                 <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK ONLINE</p>
             </div>
-			<div class="menuItems col-md-2" ng-click="Route('custRegister')" ng-class="{'myhover': route.current.activetab == 'custRegister'}">
-                <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p>
-            </div>
-			<div class = "col-md-1">
+			<!-- <div class="menuItems col-md-2" ng-click="Route('custRegister')" ng-class="{'myhover': route.current.activetab == 'custRegister'}"> -->
+                <!-- <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p> -->
+            <!-- </div> -->
+
+			<div class = "menuItemsLogin col-md-1">
 			<!-- <login-tab></login-tab>  -->
-			<loginreg-tab> </loginreg-tab>
-			  
+
+			<loginreg-modal> </loginreg-modal>
+
 			</div>
         </div>
-		
+
     </div>
-    
+
    <ng-view></ng-view>
     <script src="Scripts/General/jquery-3.1.1.min.js"></script>
     <script src="Scripts/Angualr/angular.min.js"></script>
