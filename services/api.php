@@ -68,8 +68,6 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-<<<<<<< HEAD
-		
 		private function unseenOrdersCount(){	
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
@@ -121,12 +119,8 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		private function getorderslist(){	
-=======
 
 		private function getorderslist(){
->>>>>>> f4ef89aefb36235775947b9e2e66047ce704a0c0
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -233,7 +227,7 @@
 			}
 
 			$events = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('event_name', 'event_desc', 'created_by', 'created_date');
+			$column_names = array('event_name', 'event_desc','PriceDesc','Contact', 'created_by', 'created_date');
 			$keys = array_keys($events);
 			$columns = '';
 			$values = '';
