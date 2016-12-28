@@ -68,11 +68,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-<<<<<<< HEAD
 
-		private function getorderslist(){
-=======
-		private function unseenOrdersCount(){	
+
+	private function unseenOrdersCount(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -88,10 +86,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		private function unapprovedOrdersCount(){	
->>>>>>> 0f18b1e328ac7c28a6eaf8a4eb3625495df0c90c
-			if($this->get_request_method() != "GET"){
+
+		private function unapprovedOrdersCount(){
+		if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 			$query="SELECT count(*) cnt FROM orders where approved = 'N'";
@@ -106,11 +103,8 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-<<<<<<< HEAD
-=======
-		
-		
-		private function approvedOrdersCount(){	
+
+		private function approvedOrdersCount(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -143,9 +137,6 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
->>>>>>> 0f18b1e328ac7c28a6eaf8a4eb3625495df0c90c
-
-
 		private function Logindemo(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
@@ -257,9 +248,6 @@
 				$this->response('',204);	//"No Content" status
 		}
 
-<<<<<<< HEAD
-
-=======
 private function insertorders(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
@@ -286,7 +274,6 @@ private function insertorders(){
 			}else
 				$this->response('',204);	//"No Content" status
 		}
->>>>>>> 0f18b1e328ac7c28a6eaf8a4eb3625495df0c90c
 		private function updateStatus()
 		{
 		if($this->get_request_method() != "GET"){
