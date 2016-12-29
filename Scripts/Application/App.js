@@ -18,7 +18,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             activetab: 'contact'
         }).when('/bookOnline', {
             templateUrl: 'Views/BookOnline.html',
-			controller: 'addOrdersCtrl',
+			controller: 'defaultController',
 			activetab: 'bookOnline',			
         }).when('/events',{
 			templateUrl: 'Views/Events.html',
