@@ -68,7 +68,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		private function unseenOrdersCount(){	
+
+
+	private function unseenOrdersCount(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -84,9 +86,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		private function unapprovedOrdersCount(){	
-			if($this->get_request_method() != "GET"){
+
+		private function unapprovedOrdersCount(){
+		if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 			$query="SELECT count(*) cnt FROM orders where approved = 'N'";
@@ -101,9 +103,8 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		
-		private function approvedOrdersCount(){	
+
+		private function approvedOrdersCount(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -136,8 +137,6 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-
-
 		private function Logindemo(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);

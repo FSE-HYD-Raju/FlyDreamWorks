@@ -125,9 +125,9 @@ app.factory("addCustsFact",function($http)
 app.factory("addOrdersFact",function($http)
 		{var fun = {};
 			fun.insertordersfun = function (order) {
-				return $http.post('/FlyDreamWorks/services/insertOrders',order);
-			}
-			return fun;
+				return $http.post('FlyDreamWorks/services/insertOrders',order);
+			}  
+	return fun;
 		})
 
 app.controller("addOrdersCtrl",function($scope,addOrdersFact)
