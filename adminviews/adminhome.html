@@ -2,15 +2,94 @@
 <head>
     <meta charset="utf-8">
     <link href="../css/General/bootstrap.min.css" rel="stylesheet">
-<script src="../Scripts/Angualr/angular.min.js"></script>
-<script src="../Scripts/Angualr/angular-route.min.js"></script>
-  <script src="../Scripts/Application/admin.js"></script>
+    <script src="../Scripts/Angualr/angular.min.js"></script>
+    <script src="../Scripts/Angualr/angular-route.min.js"></script>
+    <script src="../Scripts/Application/admin.js"></script>
   </head>
+  <style>
+  .info-card {
+    float: left;
+  margin: 10px;
+  -webkit-perspective: 400px;
+  }
+  .front, .back {
+  background: #FFF;
+  border-radius: 10px;
+  transition: -webkit-transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid black;
+  }
+
+  .front {
+  overflow: hidden;
+  width: 230px;
+  height: 150px;
+  position: absolute;
+  z-index: 1;
+  }
+
+  .back {
+  padding: 20px;
+  padding-top: 0px;
+  width: 230px;
+  height: 150px;
+  -webkit-transform: rotateY(-180deg);
+  overflow: scroll;
+  }
+
+  .info-card:hover .back {
+  -webkit-transform: rotateY(0);
+  }
+
+  .info-card:hover .front {
+  -webkit-transform: rotateY(180deg);
+  }
+  </style>
+
 <body ng-controller = "AdminHomeCtrl">
 <h1 align = "right"> User: {{user}}</h1>
 
-<a href="#/orderslist">Get Orders List</a>
-			<a href="#/addevents">Add New Events</a>
+<div class="row">
+	<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked">
+  <li role="presentation" class="active"><a href="#/orderslist">Get Orders List</a></li>
+  <li role="presentation"><a href="#/addevents">Add New Events</a></li>
+</ul>
+</div>
+<div class="col-md-9">
+  <div class="row">
+    <div class="col-md-12">
+      <div ng-controller="orderslistctrl">
+        <div class="info-card">
+              <div class="front">
+              order Count
+              </div>
+            <div class="back">
+          {{orderCount}}
+            </div>
+          </div>
+          <div class="info-card">
+                <div class="front">
+                order Count
+                </div>
+              <div class="back">
+            {{orderCount}}
+              </div>
+            </div>
+            <div class="info-card">
+                  <div class="front">
+                  order Count
+                  </div>
+                <div class="back">
+              {{orderCount}}
+                </div>
+              </div>
+        </div>
+      <br><br>
+  </div>
 	 <div ng-view></div>
+ </div>
+ </div>
  </body>
 </html>

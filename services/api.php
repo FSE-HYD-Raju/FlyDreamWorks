@@ -68,7 +68,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		private function unseenOrdersCount(){	
+
+
+	private function unseenOrdersCount(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -84,9 +86,9 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		private function unapprovedOrdersCount(){	
-			if($this->get_request_method() != "GET"){
+
+		private function unapprovedOrdersCount(){
+		if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 			$query="SELECT count(*) cnt FROM orders where approved = 'N'";
@@ -101,9 +103,8 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		
-		
-		private function approvedOrdersCount(){	
+
+		private function approvedOrdersCount(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -136,8 +137,6 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-
-
 		private function Logindemo(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
@@ -162,9 +161,9 @@
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			$uname =  $this->_request['uname'];
+			$email =  $this->_request['email'];
 			$password =   $this->_request['password'];
-			$query="SELECT cust_name FROM customers where email_id = $uname and password=$password";
+			$query="SELECT * FROM customers where email_id = $email and password=$password";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
@@ -199,7 +198,7 @@
 				$this->response('',406);
 			}
 			$customer = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('cust_name','password','email_id','organization_name','phone_no');
+			$column_names = array('cust_name','password','email_id','organization_name','phoneNumber');
 			$keys = array_keys($customer);
 			$columns = '';
 			$values = '';
