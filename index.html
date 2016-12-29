@@ -13,7 +13,7 @@
 </head>
 <body ng-controller="defaultController" ng-cloak>
     <div id="menu">
-        <div class="row col-md-offset-1 ">
+        <div class="row col-md-offset-3">
             <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
                 <p><i class="fa fa-home" aria-hidden="true"></i> HOME</p>
             </div>
@@ -24,11 +24,11 @@
                 <p><i class="fa fa-address-book" aria-hidden="true"></i> CONTACT</p>
             </div>
 			<div class="menuItems col-md-2" ng-click="Route('events')" ng-class="{'myhover': route.current.activetab == 'events'}">
-                <p><i class="fa fa-calendar" aria-hidden="true"></i> EVENTS</p>
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> Book Now</p>
             </div>
-            <div class="menuItems col-md-2" ng-click="Route('bookOnline')" ng-class="{'myhover': route.current.activetab == 'bookOnline'}">
+            <!-- <div class="menuItems col-md-2" ng-click="Route('bookOnline')" ng-class="{'myhover': route.current.activetab == 'bookOnline'}">
                 <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK ONLINE</p>
-            </div>
+            </div> -->
 			<!-- <div class="menuItems col-md-2" ng-click="Route('custRegister')" ng-class="{'myhover': route.current.activetab == 'custRegister'}"> -->
                 <!-- <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p> -->
             <!-- </div> -->
