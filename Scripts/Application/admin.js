@@ -14,7 +14,7 @@
 		}
 	 );
 
-		app.controller("loginctrl",function($scope,$window,getLoginDetails){
+		app.controller("loginctrl",function($scope,$window,getLoginDetails, StorageUtil){
 		var data = {};
 
 			data.uname = "vishnu";
@@ -33,7 +33,7 @@
 		}
 		});
 
-		app.controller('AdminHomeCtrl',function($scope){
+		app.controller('AdminHomeCtrl',function($scope, StorageUtil){
 		$scope.user = StorageUtil.getItem('uname');
 		})
 		app.controller('orderslistctrl',function($scope,getordersfact,approveorderfact){
@@ -100,7 +100,7 @@
 			return fun;
 		})
 
-		app.controller("addEventsCtrl",function($scope,addEventsFact)
+		app.controller("addEventsCtrl",function($scope,addEventsFact , StorageUtil)
 		{
 		$scope.saveEvents = function(events){
 		events.created_by = StorageUtil.getItem('uname');

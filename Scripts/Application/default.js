@@ -1,7 +1,7 @@
 ﻿
 
 
-app.controller('defaultController', function ($scope, $location, $route, $rootScope) {
+app.controller('defaultController', function ($scope, $location, $route, $rootScope, StorageUtil) {
 
     // $scope.Init = function () {
     //    StorageUtil.clear();
@@ -67,7 +67,7 @@ app.component("loginTab",{
 
 });
 
-app.controller('customerLoginCtrl',function($scope,getcustcredentials){
+app.controller('customerLoginCtrl',function($scope,getcustcredentials, StorageUtil){
 
 this.username = "";
 this.password = "";
@@ -96,7 +96,7 @@ app.factory("addCustsFact",function($http)
 			return fun;
 		})
 
-		app.controller("addCustsCtrl",function($scope,addCustsFact)
+		app.controller("addCustsCtrl",function($scope,addCustsFact, StorageUtil)
 		{
 		$scope.saveCustomer = function(customer){
 		alert(JSON.stringify(customer));

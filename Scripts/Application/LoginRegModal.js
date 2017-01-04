@@ -15,7 +15,7 @@ app.factory("getcustcredentials",function($http){
 
 
 
-app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact){
+app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact, StorageUtil){
 	var LoginRegModal = this;
 
 	LoginRegModal.username = "";

@@ -4,23 +4,23 @@ app.factory('StorageUtil', function () {
     var factory = {};
 
     factory.getItem = function (item) {
-        return localStorage.getItem(item);
+        return sessionStorage.getItem(item);
     }
     factory.setItem = function (item, itemValue) {
-        localStorage.setItem(item, itemValue);
+        sessionStorage.setItem(item, itemValue);
     }
     factory.removeItem = function (item) {
-        localStorage.removeItem(item);
+        sessionStorage.removeItem(item);
     }
     factory.removeAll = function () {
-        localStorage.clear();
+        sessionStorage.clear();
     }
     factory.removeAllExceptItem = function (item) {
         var i;
         var str = '';
-        for (i = 0; i < localStorage.length; i++) {
-            if (localStorage.l(i) != item)
-                localStorage.removeItem(localStorage.l(i));
+        for (i = 0; i < sessionStorage.length; i++) {
+            if (sessionStorage.l(i) != item)
+                sessionStorage.removeItem(sessionStorage.l(i));
         }
     }
     return factory;

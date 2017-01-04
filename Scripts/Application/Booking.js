@@ -1,6 +1,6 @@
 
 
-app.controller('eventsPageCtrl',function($scope,geteventsfact, $location){
+app.controller('eventsPageCtrl',function($scope,geteventsfact, $location, StorageUtil){
 	geteventsfact.eventslistfun().success(function s1(res) {
 		$scope.Events = res;
 		console.log(JSON.stringify(res));
@@ -24,7 +24,7 @@ app.factory("geteventsfact",function($http){
 });
 
 
-app.controller('eventDetailsPageCtrl',function($scope, $location){
+app.controller('eventDetailsPageCtrl',function($scope, $location, StorageUtil){
 	$scope.Event = JSON.parse(StorageUtil.getItem("SelectedEvent"));
 	console.log($scope.Event);
 
@@ -51,7 +51,7 @@ app.factory("addOrdersFact",function($http)
 });
 
 
-app.controller("addOrdersCtrl",function($scope,addOrdersFact)
+app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil)
 {
 	console.log(JSON.parse(StorageUtil.getItem("SelectedEvent")).event_id);
 	console.log(JSON.parse(StorageUtil.getItem("UserDetails")).cust_id);
