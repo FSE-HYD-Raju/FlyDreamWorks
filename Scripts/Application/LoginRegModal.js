@@ -20,22 +20,31 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 
 	LoginRegModal.username = "";
 	LoginRegModal.password = "";
-  LoginRegModal.UserDetails = null;
-	LoginRegModal.logintab;
+	LoginRegModal.UserDetails = null;
+	LoginRegModal.logintab = true;
+  LoginRegModal.confirm_password="";
 	LoginRegModal.custlogin = function()
 	{
-		$('.modal').modal('hide');
 		var data = {};
 		data.email_id = LoginRegModal.username;
 		data.password = LoginRegModal.password;
-    checkLogin(data);
+		checkLogin(data);
 	}
-
+	$scope.LoginFailed = false;
 	var checkLogin = function(data){
 		getcustcredentials.custlogindets(data).then(function s1(res) {
-			LoginRegModal.UserDetails = res.data[0];
-			localStorage.setItem("UserDetails", JSON.stringify(res.data[0]));
 			console.log(JSON.stringify(res.data));
+			if(res.data != "") {
+				LoginRegModal.UserDetails = res.data[0];
+				StorageUtil.setItem("UserDetails", JSON.stringify(res.data[0]));
+				console.log(JSON.stringify(res.data));
+				$('#loginModal').modal('hide');
+				$scope.LoginFailed = false;
+
+			} else {
+				$scope.LoginFailed = true;
+			}
+
 		}, function e1(res) {
 			console.log("error");
 		});
@@ -45,8 +54,8 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 
 
 	LoginRegModal.saveCustomer = function(){
-		$scope.confirm_password="";
-		$('.modal').modal('hide');
+		LoginRegModal.confirm_password="";
+		$('#loginModal').modal('hide');
 		var customer = {};
 		customer.cust_name = LoginRegModal.Regusername;
 		customer.email_id = LoginRegModal.Regemail;
@@ -56,26 +65,26 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 		addCustsFact.insertcustsfun(customer).then(function s1(res) {
 			LoginRegModal.RegResponse = res.data;
 			console.log(JSON.stringify(res));
-      checkLogin(customer);
+			checkLogin(customer);
 
 		}, function e1(res) {
 			console.log("error");
 		});
 	}
 
-var cleardata = function(){
-	LoginRegModal.Regusername = null;
-	LoginRegModal.Regemail = null;
-	LoginRegModal.Regpassword = null;
-	LoginRegModal.username = '';
-	LoginRegModal.password = null;
+	var cleardata = function(){
+		LoginRegModal.Regusername = null;
+		LoginRegModal.Regemail = null;
+		LoginRegModal.Regpassword = null;
+		LoginRegModal.username = '';
+		LoginRegModal.password = null;
 
-}
+	}
 
 	LoginRegModal.logout = function(){
-		LoginRegModal.UserDetails = "";
-		localStorage.setItem("UserDetails", "");
-    cleardata();
+		LoginRegModal.UserDetails = 0;
+		StorageUtil.setItem("UserDetails", 0);
+		cleardata();
 	}
 });
 

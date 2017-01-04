@@ -1,72 +1,114 @@
-﻿<div class="container" style="width:400px">
-    <div class="row main">
+
+
+
+    <div class="container" >
+      <div class="row main">
         <div class="panel-heading">
-            <div class="panel-title text-center">
-                <h1 class="title">Your Special Day</h1>
-                <hr />
+          <div class="panel-title text-center">
+            <h1 class="title">Your Special Day</h1>
+            <hr />
+          </div>
+        </div>
+        <div >
+          <form class="form-horizontal" >
+            <div class="form-group" >
+                  <div class="row">
+                    <div class="col-md-offset-3 col-md-6">
+                      <div id="datetimepicker12" ></div>
+                    </div>
+                  </div>
             </div>
+          </form>
+          <form class="form-horizontal" ng-submit="saveOrders()">
+            <div style="width:20%" class="col-md-offset-4">
+              <div class="form-group">
+                <label for="state" class="cols-sm-2 control-label">state</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" required id="state" placeholder="Enter your State" ng-model="order.state"/>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="city" class="cols-sm-2 control-label">city</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-home fa-lg" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" required id="city" placeholder="Enter your city" ng-model="order.city"/>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="place" class="cols-sm-2 control-label">Event Place</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" required id="place" placeholder="Enter your Address" ng-model="order.event_place" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pincode" class="cols-sm-2 control-label">Pincode</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" required id="pincode" placeholder="Enter your pincode" ng-model="order.pincode"/>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block" value="Book"/>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="main-login main-center">
-            <form class="form-horizontal" method="post" action="#">
-                <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label">Date Of Event</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
-                            <input type="date" class="form-control" name="date" id="date" placeholder="Date Of Event" ng-model="order.event_date"/>
-                        </div>
-                    </div>
-                </div>
-               <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label">Event Time</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
-                            <input type="time" class="form-control" name="date" id="date" placeholder="Date Of Event" ng-model="order.event_time"/>
-                        </div>
-                    </div>
-                </div>				
-			<div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Event Place</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" ng-model="order.event_place" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">state</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" ng-model="order.state"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label">city</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-home fa-lg" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="city" id="city" placeholder="Enter your city" ng-model="order.city"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label">Pincode</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="date" id="date" placeholder="Date Of Event" ng-model="order.pincode"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block " ng-click="saveOrders(order)">Book </button>
-                </div>
-				
-            </form>
-        </div>
+      </div>
     </div>
-</div>
+
+
+    <!-- /*<style>
+    .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+    }
+    .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+    }
+    </style>
+    <div >
+    <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+    <h4>Inline</h4>
+    <div style="display:inline-block; min-height:290px;">
+    <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+    </div>
+
+    <hr />
+    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+    </div>*/ -->
+
+    <!-- <div class="form-group">
+    <label for="confirm" class="cols-sm-2 control-label">Date Of Event</label>
+    <div class="cols-sm-10">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
+    <input type="date" class="form-control" name="date" id="date" placeholder="Date Of Event" ng-model="order.event_date"/>
+    </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="confirm" class="cols-sm-2 control-label">Event Time</label>
+    <div class="cols-sm-10">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
+    <input type="time" class="form-control" name="date" id="date" placeholder="Date Of Event" ng-model="order.event_time"/>
+    </div>
+    </div>
+    </div> -->

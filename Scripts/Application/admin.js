@@ -25,7 +25,7 @@
 		data.pwd = $scope.pwd;
 			getLoginDetails.login(data).success(function s1(res) {
 				$scope.Details = res;
-				localStorage.setItem('uname',res[0].user_name);
+				StorageUtil.setItem('uname',res[0].user_name);
 				$window.location.href = '/FlyDreamWorks/adminviews/adminhome.html';
 			}).error(function e1(res) {
 
@@ -34,7 +34,7 @@
 		});
 
 		app.controller('AdminHomeCtrl',function($scope){
-		$scope.user = localStorage.getItem('uname');
+		$scope.user = StorageUtil.getItem('uname');
 		})
 		app.controller('orderslistctrl',function($scope,getordersfact,approveorderfact){
 			$scope.cardClass = 'card';
@@ -103,7 +103,7 @@
 		app.controller("addEventsCtrl",function($scope,addEventsFact)
 		{
 		$scope.saveEvents = function(events){
-		events.created_by = localStorage.getItem('uname');
+		events.created_by = StorageUtil.getItem('uname');
 		var today = new Date();
 		var dd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!

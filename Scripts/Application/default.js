@@ -1,21 +1,35 @@
 ﻿
 
 
-app.controller('defaultController', function ($scope, $location, $route) {
+app.controller('defaultController', function ($scope, $location, $route, $rootScope) {
 
+    // $scope.Init = function () {
+    //    StorageUtil.clear();
+    //  }
+// $scope.Init();
     $scope.Route = function (path) {
         $location.path(path);
     }
-
+    if(!StorageUtil.getItem("UserDetails")){
+      StorageUtil.setItem("UserDetails", 0);
+    }
     $scope.links = [
         { src: "Images/booking-Photographer.jpg", alt: "", caption: "" },
         { src: "Images/onMountain.jpg", alt: "", caption: "" },
         { src: "Images/holdingHand.jpg", alt: "", caption: "" },
         { src: "Images/average_wedding_cost.jpg", alt: "", caption: "" },
         { src: "Images/Table.jpg", alt: "", caption: "" },
-
     ];
     $scope.route = $route;
+
+    $rootScope.$on("$locationChangeStart", function (event, next, current) {
+
+       if (StorageUtil.getItem("UserDetails") == "0" && next== "http://localhost:50/FlyDreamworks/index.html#/bookOnline") {
+               $location.path('/home');
+           }
+          console.log(next);
+       });
+
 });
 
  app.directive('carousel', function($timeout) {
@@ -31,34 +45,9 @@ app.controller('defaultController', function ($scope, $location, $route) {
          }
       });
 
-app.controller('eventsPageCtrl',function($scope,geteventsfact, $location){
-		geteventsfact.eventslistfun().success(function s1(res) {
-				$scope.Events = res;
-				console.log(JSON.stringify(res));
-			}).error(function e1(res) {
-			});
-      $scope.eventSelected = function(event){
-	    localStorage.setItem("SelectedEvent", JSON.stringify(event));
-	  $scope.Route('eventDetailsPage');
-	  }
-
-});
 
 
 
-app.factory("geteventsfact",function($http){
-						var fun = {};
-			fun.eventslistfun = function () {
-				return $http.get('services/events');
-			}
-			return fun;
-		});
-
-
-app.controller('eventDetailsPageCtrl',function($scope,geteventsfact, $location){
-		$scope.Event = JSON.parse(localStorage.getItem("SelectedEvent"));
-		console.log($scope.Event);
-});
 
 
 app.factory("getcustcredentials",function($http){
@@ -79,7 +68,6 @@ app.component("loginTab",{
 });
 
 app.controller('customerLoginCtrl',function($scope,getcustcredentials){
-
 
 this.username = "";
 this.password = "";
@@ -122,27 +110,8 @@ app.factory("addCustsFact",function($http)
 		});
 
 
-app.factory("addOrdersFact",function($http)
-		{var fun = {};
-			fun.insertordersfun = function (order) {
-				return $http.post('FlyDreamWorks/services/insertOrders',order);
-			}  
-	return fun;
-		})
 
-app.controller("addOrdersCtrl",function($scope,addOrdersFact)
-		{
-		$scope.saveOrders = function(order){
-		 order.event_id = 1;
-		order.cust_id = 1;
-		alert(JSON.stringify(order));
-		 addOrdersFact.insertordersfun(order).success(function s1(res) {
-				 $scope.Details = res;
-				 alert(JSON.stringify(res));
-			 }).error(function e1(res) {
-			 });
-		 }
-		});
+
 
 
 
