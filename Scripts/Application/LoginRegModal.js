@@ -18,11 +18,19 @@ app.factory("getcustcredentials",function($http){
 app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact, StorageUtil){
 	var LoginRegModal = this;
 
+
 	LoginRegModal.username = "";
 	LoginRegModal.password = "";
 	LoginRegModal.UserDetails = null;
 	LoginRegModal.logintab = true;
   LoginRegModal.confirm_password="";
+
+	if(StorageUtil.getItem("UserDetails") != "0"){
+		LoginRegModal.UserDetails = JSON.parse(StorageUtil.getItem("UserDetails"));
+
+	}
+
+
 	LoginRegModal.custlogin = function()
 	{
 		var data = {};
