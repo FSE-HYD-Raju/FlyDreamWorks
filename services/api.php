@@ -198,7 +198,7 @@
 				$this->response('',406);
 			}
 			$customer = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('cust_name','password','email_id','organization_name','phoneNumber');
+			$column_names = array('cust_name','password','email_id','organization_name');
 			$keys = array_keys($customer);
 			$columns = '';
 			$values = '';

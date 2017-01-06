@@ -1,47 +1,46 @@
-
-  <table border = 3>
-  <tr><th>Order Number</th>
-  <th>event name</th>
-  <th>event description</th>
-  <th>event date</th>
-  <th>event time</th>
-  <th>event place</th>
-  <th>city</th>
-  <th>state</th>
-  <th>pincode</th>
-  <th>customer name</th>
-  <th>email id</th>
-  <th>organization name </th>
-  <th>phone number</th>
-  <th>order accepted</th>
+<div>
+<input type="text" ng-model="searchText"/>
+<select ng-model="statusSearch">
+<option value="Y" >Approved</option>
+<option value="N" >Rejected</option>
+</select>
+<table  class="table table-striped table-hover">
+  <thead><tr><th></th>
+    <th><a id="event name" href="" ng-click="orderText = 'event_name' ; sortReverse = !sortReverse">
+            Event Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+                      <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
+</a>
+  </th>
+  <th><a id="cusotmer name" href="" ng-click="orderText = 'cust_name' ; sortReverse = !sortReverse">
+        Customer Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+                    <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
+  </a>
+  </th>
+  <th><a id="cusotmer name" href="" ng-click="orderText = 'email_id' ; sortReverse = !sortReverse">
+      Email Id<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+                    <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
+  </a>
+  </th>
+  <th><b>Status</b></th>
+  </thead>
+  <tbody class="accordion-toggle" ng-repeat="det in Details | filter : searchText | filter : {approved : statusSearch} | orderBy:orderText:sortReverse"><tr>
+    <td data-toggle="collapse" data-target="#{{$index+1}}"> <span><img src="../Images/expand.jpg" width = "30" height = "30"></span></td>
+    <td>{{det.event_name}}</td>
+    <td>{{det.cust_name}}</td>
+    <td>{{det.event_date}}</td>
+    <td>{{det.approved}}</td>
   </tr>
-  <tr ng-repeat = "det in Details track by $index">
-  <td ng-bind = "det.order_num"></td>
-  <td ng-bind = "det.event_name"></td>
-  <th ng-bind = "det.event_desc"></th>
-  <td ng-bind = "det.event_date"></td>
-  <td ng-bind = "det.event_time"></td>
-  <td ng-bind = "det.event_place"></td>
+  <tr id="{{$index+1}}" class="collapse out">
+  <td colspan="9"><div class="span9"><div style = "float:center"><table class="table table-hover table-condensed table-striped">
+    <thead>
+      <tr><th>Email Id</th><th>Customer Name</th></tr>
+    </thead>
+  <tbody><tr><td>{{det.email_id}}</td>
+  <td>{{det.cust_name}}</td>
+  <td>{{det.event_date}}</td></tr>
+<tr><td>{{det.email_id}}</td><td>{{det.cust_name}}</td></tr></tbody></table></div></tr></div></td>
+</tr>
+</tbody>
+</table>
 
-
-  <td ng-bind = "det.city"></td>
-  <td ng-bind = "det.state"></td>
-  <td ng-bind = "det.pincode"></td>
-
-  <td ng-bind = "det.cust_name"></td>
-  <td ng-bind = "det.email_id"></td>
-  <td ng-bind = "det.organization_name"></td>
-  <td ng-bind = "det.phone_no"></td>
-
-  <td ng-bind = "det.cust_addr"></td>
-  <td ng-bind = "det.city"></td>
-  <td ng-bind = "det.state"></td>
-  <td ng-if = "det.approved == 'N'"><input type="button" value="Accept" ng-click="approveorder(det.order_num)"></td>
-  </tr>
-  </table>
-
-  <td><div ng-if = "det.approved == 'N'"><input type="button" value="Accept" ng-click="approveorder(det.order_num)" ></div><div ng-if = "det.approved == 'Y'"><input type="button" value="Reject" ng-click="approveorder(det.order_num)" ></div></td>
-  </tr>
-  </table>
-  </body>
-</html>
+</div>
