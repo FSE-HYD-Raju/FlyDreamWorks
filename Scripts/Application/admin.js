@@ -1,4 +1,4 @@
-			var app = angular.module("AdminModule",['ngRoute','datatables']);
+			var app = angular.module("AdminModule",['ngRoute']);
 		app.config(
 			function config($routeProvider) {
 				$routeProvider.when('/orderslist', {
@@ -17,7 +17,15 @@
 			app.controller('AdminHomeCtrl',function($scope){
 			$scope.user = localStorage.getItem('uname');
 			})
-			app.controller('orderslistctrl',function($scope,getordersfact,approveorderfact,DTOptionsBuilder, DTColumnBuilder){
+			app.controller('orderslistctrl',function($scope,$window,getordersfact,approveorderfact){
+					$scope.change = function(status,ordernum)
+					{
+						approveorderfact.approveorderfun(ordernum,status).success(function s1(res) {
+							$window.location.reload();
+							}).error(function e1(res) {
+								console.log(JSON.stringify(res));
+							});
+								}
 			getordersfact.orderslistfun().success(function s1(res) {
 				$scope.sortReverse  = false;
 					$scope.Details = res;
@@ -28,7 +36,6 @@
 					{
 					if(details[i].approved == "Y") {
 							$scope.approvedorderCount++;
-							console.log(details[i].approved);
 	}
 	}
 		$scope.rejectedordersCount = 0;
@@ -48,18 +55,6 @@
 				}).error(function e1(res) {
 				});
 
-										$scope.vm = {};
-
-						$scope.vm.dtOptions = DTOptionsBuilder.newOptions()
-						  .withOption('order', [0, 'asc']);
-
-			$scope.approveorder = function(input)
-			{
-			approveorderfact.approveorderfun(input).success(function s1(res) {
-					$scope.Details = res;
-				}).error(function e1(res) {
-				});
-			}
 			})
 
 
@@ -71,9 +66,13 @@
 				return fun;
 			})
 			app.factory("approveorderfact",function($http)
-			{var fun = {};
-				fun.approveorderfun = function (ordernum) {
-					return $http.get('../services/updateStatus?ordernumber='+ordernum);
+			{
+
+				var fun = {};
+				fun.approveorderfun = function (ordernum,status) {
+					console.log(ordernum);
+					console.log(status);
+					return $http.get("../services/updateStatus?ordernumber="+ordernum+"&status='"+status+"'");
 				}
 				return fun;
 			})

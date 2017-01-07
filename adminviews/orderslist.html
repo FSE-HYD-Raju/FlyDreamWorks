@@ -17,7 +17,7 @@
   </a>
   </th>
   <th><a id="cusotmer name" href="" ng-click="orderText = 'email_id' ; sortReverse = !sortReverse">
-      Email Id<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+      Event Date<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
                     <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
   </a>
   </th>
@@ -28,19 +28,45 @@
     <td>{{det.event_name}}</td>
     <td>{{det.cust_name}}</td>
     <td>{{det.event_date}}</td>
-    <td>{{det.approved}}</td>
-  </tr>
+<td>    <ANY ng-switch on= "det.approved">
+  <ANY ng-switch-when='Y'><span class="count green" >Approved</span></ANY>
+  <ANY ng-switch-when='N'><span class="count red">Rejected</span></ANY>
+  <ANY ng-switch-when=null><span class="count blue">Pending</span></any>
+  <ANY ng-switch-default><span>error</span></ANY>
+</ANY>
+  </td></tr>
   <tr id="{{$index+1}}" class="collapse out">
-  <td colspan="9"><div class="span9"><div style = "float:center"><table class="table table-hover table-condensed table-striped">
-    <thead>
-      <tr><th>Email Id</th><th>Customer Name</th></tr>
-    </thead>
-  <tbody><tr><td>{{det.email_id}}</td>
-  <td>{{det.cust_name}}</td>
-  <td>{{det.event_date}}</td></tr>
-<tr><td>{{det.email_id}}</td><td>{{det.cust_name}}</td></tr></tbody></table></div></tr></div></td>
+  <td colspan="9"><div class="span9">
+  <div style = "float:center" class = "row"><div class= "col-md-6"><div class = "panel panel-warning" style="height:200px;width:600px;">
+   <div class = "panel-heading">
+   <b> Event Address Details</b>
+   </div>
+   <div class = "panel-body" >
+   <div class= "row"><div class = "col-md-3"><b>Time</b></div><div class="col-md-9">{{det.event_time}}</div>
+<div class = "col-md-3"><b>Place</b></div><div class="col-md-9">{{det.event_place}}</div>
+<div class = "col-md-3"><b>City</b></div><div class="col-md-9">{{det.city}}</div>
+<div class = "col-md-3"><b>State</b></div><div class="col-md-9">{{det.state}}</div>
+			</div>
+			</div>
+</div>
+</div>
+<div class = "col-md-6">
+<div class = "panel panel-warning" style="height:200px;width:600px;">
+   <div class = "panel-heading" >
+   <b> Customer Information</b>
+   </div>
+   <div class = "panel-body">
+     <div class= "row">
+     <div class = "col-md-3"><b>Email ID</b></div><div class="col-md-9">{{det.email_id}}</div>
+     <div class = "col-md-3"><b>Phone Number</b></div><div class="col-md-9">{{det.phone_no}}</div>
+     <div class="col-md-4"></div><div class="col-md-8"><span ng-show = "det.approved == 'Y' " ><input type = "button" class= "btn btn-danger" value="Reject" ng-click = "change('N',det.order_num)"></span>
+    <span ng-show = "det.approved == 'N' || det.approved == null"><input type="button" class = "btn btn-success" value="Approve" ng-click = "change('Y',det.order_num)"></span></div>
+   </div>
+    </div>
+</div>
+</div>
+</div></tr></div></td>
 </tr>
 </tbody>
 </table>
-
 </div>
