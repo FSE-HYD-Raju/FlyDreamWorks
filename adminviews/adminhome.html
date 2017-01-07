@@ -4,9 +4,11 @@
     <link href="../css/General/bootstrap.min.css" rel="stylesheet">
 	<link href="../css/custom.min.css" rel="stylesheet">
   </head>
- <body class="nav-md" ng-controller="AdminHomeCtrl">
-		<div class="container body">
-		  <div class="main_container">
+ <body class="nav-md" ng-controller="AdminHomeCtrl" >
+
+     <div class="container body">
+
+		  <div class="main_container" ng-hide = {{logoutvar}}>
 			<div class="col-md-3 left_col">
 			  <div class="left_col scroll-view">
 				<div class="navbar nav_title" style="border: 0;">
@@ -35,7 +37,9 @@
 					<ul class="nav side-menu">
 					  <li><a href="#/orderslist"><i class="fa fa-home"></i> Orders <span class="fa fa-chevron-down"></span></a>
 					  </li>
-            <li><a href="#/addevents"><i class="fa fa-home"></i> Events <span class="fa fa-chevron-down"></span></a>
+            <li><a href="#/eventslist"><i class="fa fa-home"></i> Events <span class="fa fa-chevron-down"></span></a>
+					  </li>
+            <li><a href="#/addevents"><i class="fa fa-home"></i>Add New Event<span class="fa fa-chevron-down"></span></a>
 					  </li>
 					</div>
 				</div>
@@ -61,7 +65,7 @@
 					  <ul class="dropdown-menu dropdown-usermenu pull-right">
 						<li><a href="javascript:;"> Profile</a></li>
 						<li><a href="javascript:;">Help</a></li>
-						<li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+						<li><a ng-href="#" ng-click = "logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 					  </ul>
 					</li>
 				  </ul>
@@ -71,22 +75,22 @@
 			<!-- /top navigation -->
 
 			<!-- page content -->
-			<div class="right_col" role="main" ng-controller="orderslistctrl">
+			<div class="right_col" role="main" ng-controller="orderslistctrl" >
 			  <!-- top tiles -->
 			  <div class="row tile_count">
-				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
 				  <span class="count_top"><i class="fa fa-user"></i> Total Orders</span>
 				  <div class="count">{{orderCount}}</div>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
 				  <span class="count_top"><i class="fa fa-clock-o"></i> Approved Orders</span>
 				  <div class="count green">{{approvedorderCount}}</div>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
 				  <span class="count_top"><i class="fa fa-user"></i> Rejected Orders</span>
 				  <div class="count red">{{rejectedordersCount}}</div>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
 				  <span class="count_top"><i class="fa fa-user"></i> Unseen Orders</span>
 				  <div class="count">{{unseenordersCount}}</div>
 				</div>
@@ -107,6 +111,9 @@
 	<!-- Custom Theme Scripts -->
 		<script src="../Scripts/admin/custom.min.js"></script>
 			</div>
+      <div ng-show = {{logoutvar}}>
+    <center>  <h1>  Please login again</h1></center>
+      </div>
 			<!-- /page content -->
 	  </body>
 </html>

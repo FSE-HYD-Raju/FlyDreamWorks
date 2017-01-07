@@ -8,15 +8,47 @@
 					when('/addevents',{
 					templateUrl: '../adminviews/addevents.html',
 					controller : 'addEventsCtrl'
+					}).
+					when('/eventslist',{
+					templateUrl: '../adminviews/eventslist.html',
+					controller : 'eventslistctrl'
 					}).otherwise({
 					  redirectTo: '/orderslist'
 				  });
 			}
 		 );
 
-			app.controller('AdminHomeCtrl',function($scope){
+			app.controller('AdminHomeCtrl',function($scope,$window){
 			$scope.user = localStorage.getItem('uname');
+			$scope.logoutvar = localStorage.getItem('logout');
+			console.log($scope.logoutvar);
+			$scope.logout = function ()
+			{
+				localStorage.setItem('uname','');
+				localStorage.setItem('logout',true);
+				$scope.logoutvar = localStorage.getItem('logout');
+				console.log($scope.logoutvar);
+				$window.location.href = "../login.html";
+			}
 			})
+
+			app.controller('eventslistctrl',function($scope,geteventsfact){
+				geteventsfact.eventslistfun().success(function s1(res){
+					$scope.event_det = res;
+				}).error(function e1(res){
+					console.log(res);
+				})
+				})
+
+			app.factory("geteventsfact",function($http){
+							var fun = {};
+				fun.eventslistfun = function () {
+					return $http.get('../services/events');
+				}
+				return fun;
+			})
+
+
 			app.controller('orderslistctrl',function($scope,$window,getordersfact,approveorderfact){
 					$scope.change = function(status,ordernum)
 					{
