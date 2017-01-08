@@ -1,11 +1,11 @@
 <div>
-<input type="text" ng-model="searchText" placeholder="Search" style = "float:right"/>
-<b>Filter By Status</b><select ng-model="statusSearch">
+<input type="text" ng-model="searchText" placeholder="Search" style = "float:right" ng-change = "currval = 0"/>
+<b>Filter By Status</b><select ng-model="statusSearch" ng-change = "currval = 0">
 <option value="Y" >Approved</option>
 <option value="N" >Rejected</option>
 </select>
 <table  class="table table-striped table-hover">
-  <thead><tr><th></th>
+  <thead><tr><th></th><th>order number</th>
     <th><a id="event name" href="" ng-click="orderText = 'event_name' ; sortReverse = !sortReverse">
             Event Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
                       <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
@@ -23,8 +23,9 @@
   </th>
   <th><b>Status</b></th>
   </thead>
-  <tbody class="accordion-toggle" ng-repeat="det in Details | filter : searchText | filter : {approved : statusSearch} | orderBy:orderText:sortReverse"><tr>
+  <tbody class="accordion-toggle" ng-repeat="det in Details | filter : searchText | filter : {approved : statusSearch} | orderBy:orderText:sortReverse | startFrom : currval*5 | limitTo:5"><tr>
     <td data-toggle="collapse" data-target="#{{$index+1}}"> <span><img src="../Images/expand.jpg" width = "30" height = "30"></span></td>
+    <td>{{det.order_num}}</td>
     <td>{{det.event_name}}</td>
     <td>{{det.cust_name}}</td>
     <td>{{det.event_date}}</td>
@@ -62,11 +63,16 @@
      <div class="col-md-4"></div><div class="col-md-8"><span ng-show = "det.approved == 'Y' " ><input type = "button" class= "btn btn-danger" value="Reject" ng-click = "change('N',det.order_num)"></span>
     <span ng-show = "det.approved == 'N' || det.approved == null"><input type="button" class = "btn btn-success" value="Approve" ng-click = "change('Y',det.order_num)"></span></div>
    </div>
-    </div>
+  </div>
 </div>
 </div>
 </div></tr></div></td>
 </tr>
 </tbody>
 </table>
-</div>
+<div class= "row">
+  <div class = "col-md-4">
+<input type="button" value="Pervious" ng-disabled = "currval == 0"   ng-click="currval = currval-1"/></div>
+<div class= "col-md-4"><span> Page <input type = "text" ng-model = "currval"> of {{(Details | filter : searchText | filter : {approved : statusSearch}).length/5 | floor}} </span></div>
+<div class = "col-md-4"><input type="button" value="next" ng-disabled = "(currval *5)+5 >= (Details | filter : searchText | filter : {approved : statusSearch}).length" ng-click = "currval = currval+1" /></div>
+</div></div>

@@ -47,9 +47,19 @@
 				}
 				return fun;
 			})
-
-
+			app.filter('floor', function() {
+			    return function(input) {
+			        return Math.floor(input);
+			    };
+			});
+			app.filter('startFrom', function() {
+			    return function(input, start) {
+			        start = +start; //parse to int
+			        return input.slice(start);
+			    }
+			});
 			app.controller('orderslistctrl',function($scope,$window,getordersfact,approveorderfact){
+
 					$scope.change = function(status,ordernum)
 					{
 						approveorderfact.approveorderfun(ordernum,status).success(function s1(res) {
@@ -60,7 +70,8 @@
 								}
 			getordersfact.orderslistfun().success(function s1(res) {
 				$scope.sortReverse  = false;
-					$scope.Details = res;
+				$scope.currval = 0;
+				$scope.Details = res;
 					var details = res;
 					$scope.orderCount = res.length;
 					$scope.approvedorderCount = 0;
