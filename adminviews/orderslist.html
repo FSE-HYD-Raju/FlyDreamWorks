@@ -1,78 +1,79 @@
-<div>
-<input type="text" ng-model="searchText" placeholder="Search" style = "float:right" ng-change = "currval = 0"/>
-<b>Filter By Status</b><select ng-model="statusSearch" ng-change = "currval = 0">
-<option value="Y" >Approved</option>
-<option value="N" >Rejected</option>
-</select>
-<table  class="table table-striped table-hover">
-  <thead><tr><th></th><th>order number</th>
-    <th><a id="event name" href="" ng-click="orderText = 'event_name' ; sortReverse = !sortReverse">
-            Event Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+  <div>
+  <input type="text" ng-model="searchText" placeholder="Search" style = "float:right" ng-change = "currval = 0"/>
+  <b>Filter By Status</b><select ng-model="statusSearch" ng-change = "currval = 0">
+  <option value="Y" >Approved</option>
+  <option value="N" >Rejected</option>
+  <option value="!">Pending</option>
+  </select>
+  <table  class="table table-striped table-hover">
+    <thead><tr><th></th><th>order number</th>
+      <th><a id="event name" href="" ng-click="orderText = 'event_name' ; sortReverse = !sortReverse">
+              Event Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+                        <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
+  </a>
+    </th>
+    <th><a id="cusotmer name" href="" ng-click="orderText = 'cust_name' ; sortReverse = !sortReverse">
+          Customer Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
                       <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
-</a>
-  </th>
-  <th><a id="cusotmer name" href="" ng-click="orderText = 'cust_name' ; sortReverse = !sortReverse">
-        Customer Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
-                    <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
-  </a>
-  </th>
-  <th><a id="cusotmer name" href="" ng-click="orderText = 'email_id' ; sortReverse = !sortReverse">
-      Event Date<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
-                    <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
-  </a>
-  </th>
-  <th><b>Status</b></th>
-  </thead>
-  <tbody class="accordion-toggle" ng-repeat="det in Details | filter : searchText | filter : {approved : statusSearch} | orderBy:orderText:sortReverse | startFrom : currval*5 | limitTo:5"><tr>
-    <td data-toggle="collapse" data-target="#{{$index+1}}"> <span><img src="../Images/expand.jpg" width = "30" height = "30"></span></td>
-    <td>{{det.order_num}}</td>
-    <td>{{det.event_name}}</td>
-    <td>{{det.cust_name}}</td>
-    <td>{{det.event_date}}</td>
-<td>    <ANY ng-switch on= "det.approved">
-  <ANY ng-switch-when='Y'><span class="count green" >Approved</span></ANY>
-  <ANY ng-switch-when='N'><span class="count red">Rejected</span></ANY>
-  <ANY ng-switch-when=null><span class="count blue">Pending</span></any>
-  <ANY ng-switch-default><span>error</span></ANY>
-</ANY>
-  </td></tr>
-  <tr id="{{$index+1}}" class="collapse out">
-  <td colspan="9"><div class="span9">
-  <div style = "float:center" class = "row"><div class= "col-md-6"><div class = "panel panel-warning" style="height:200px;width:600px;">
-   <div class = "panel-heading">
-   <b> Event Address Details</b>
-   </div>
-   <div class = "panel-body" >
-   <div class= "row"><div class = "col-md-3"><b>Time</b></div><div class="col-md-9">{{det.event_time}}</div>
-<div class = "col-md-3"><b>Place</b></div><div class="col-md-9">{{det.event_place}}</div>
-<div class = "col-md-3"><b>City</b></div><div class="col-md-9">{{det.city}}</div>
-<div class = "col-md-3"><b>State</b></div><div class="col-md-9">{{det.state}}</div>
-			</div>
-			</div>
-</div>
-</div>
-<div class = "col-md-6">
-<div class = "panel panel-warning" style="height:200px;width:600px;">
-   <div class = "panel-heading" >
-   <b> Customer Information</b>
-   </div>
-   <div class = "panel-body">
-     <div class= "row">
-     <div class = "col-md-3"><b>Email ID</b></div><div class="col-md-9">{{det.email_id}}</div>
-     <div class = "col-md-3"><b>Phone Number</b></div><div class="col-md-9">{{det.phone_no}}</div>
-     <div class="col-md-4"></div><div class="col-md-8"><span ng-show = "det.approved == 'Y' " ><input type = "button" class= "btn btn-danger" value="Reject" ng-click = "change('N',det.order_num)"></span>
-    <span ng-show = "det.approved == 'N' || det.approved == null"><input type="button" class = "btn btn-success" value="Approve" ng-click = "change('Y',det.order_num)"></span></div>
-   </div>
+    </a>
+    </th>
+    <th><a id="cusotmer name" href="" ng-click="orderText = 'email_id' ; sortReverse = !sortReverse">
+        Event Date<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+                      <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
+    </a>
+    </th>
+    <th><b>Status</b></th>
+    </thead>
+    <tbody class="accordion-toggle" ng-repeat="det in Details | filter : searchText | filter : {approved : statusSearch} | orderBy:orderText:sortReverse | startFrom : currval*5 | limitTo:5"><tr>
+      <td data-toggle="collapse" data-target="#{{$index+1}}"> <span><img src="../Images/expand.jpg" width = "30" height = "30"></span></td>
+      <td>{{det.order_num}}</td>
+      <td>{{det.event_name}}</td>
+      <td>{{det.cust_name}}</td>
+      <td>{{det.event_date}}</td>
+  <td>    <ANY ng-switch on= "det.approved">
+    <ANY ng-switch-when='Y'><span class="count green" >Approved</span></ANY>
+    <ANY ng-switch-when='N'><span class="count red">Rejected</span></ANY>
+    <ANY ng-switch-when=null><span class="count blue">Pending</span></any>
+    <ANY ng-switch-default><span>error</span></ANY>
+  </ANY>
+    </td></tr>
+    <tr id="{{$index+1}}" class="collapse out">
+    <td colspan="9"><div class="span9">
+    <div style = "float:center" class = "row"><div class= "col-md-6"><div class = "panel panel-warning" style="height:200px;width:600px;">
+     <div class = "panel-heading">
+     <b> Event Address Details</b>
+     </div>
+     <div class = "panel-body" >
+     <div class= "row"><div class = "col-md-3"><b>Time</b></div><div class="col-md-9">{{det.event_time}}</div>
+  <div class = "col-md-3"><b>Place</b></div><div class="col-md-9">{{det.event_place}}</div>
+  <div class = "col-md-3"><b>City</b></div><div class="col-md-9">{{det.city}}</div>
+  <div class = "col-md-3"><b>State</b></div><div class="col-md-9">{{det.state}}</div>
+  			</div>
+  			</div>
   </div>
-</div>
-</div>
-</div></tr></div></td>
-</tr>
-</tbody>
-</table>
-<div class= "row">
-  <div class = "col-md-4">
-<input type="button" value="Pervious" ng-disabled = "currval == 0"   ng-click="currval = currval-1"/></div>
-<div class= "col-md-4"><span> Page <input type = "text" ng-model = "currval"> of {{(Details | filter : searchText | filter : {approved : statusSearch}).length/5 | floor}} </span></div>
-<div class = "col-md-4"><input type="button" value="next" ng-disabled = "(currval *5)+5 >= (Details | filter : searchText | filter : {approved : statusSearch}).length" ng-click = "currval = currval+1" /></div>
-</div></div>
+  </div>
+  <div class = "col-md-6">
+  <div class = "panel panel-warning" style="height:200px;width:600px;">
+     <div class = "panel-heading" >
+     <b> Customer Information</b>
+     </div>
+     <div class = "panel-body">
+       <div class= "row">
+       <div class = "col-md-3"><b>Email ID</b></div><div class="col-md-9">{{det.email_id}}</div>
+       <div class = "col-md-3"><b>Phone Number</b></div><div class="col-md-9">{{det.phone_no}}</div>
+       <div class="col-md-4"></div><div class="col-md-8"><span ng-show = "det.approved == 'Y' " ><input type = "button" class= "btn btn-danger" value="Reject" ng-click = "change('N',det.order_num)"></span>
+      <span ng-show = "det.approved == 'N' || det.approved == null"><input type="button" class = "btn btn-success" value="Approve" ng-click = "change('Y',det.order_num)"></span></div>
+     </div>
+    </div>
+  </div>
+  </div>
+  </div></tr></div></td>
+  </tr>
+  </tbody>
+  </table>
+  <div class= "row">
+    <div class = "col-md-4">
+  <input type="button" value="Pervious" ng-disabled = "currval == 0"   ng-click="currval = currval-1"/></div>
+  <div class= "col-md-4"><span> Page <input type = "text" ng-model = "currval"> of {{((Details | filter : searchText | filter : {approved : statusSearch}).length/5)-0.1 | floor}} </span></div>
+  <div class = "col-md-4"><input type="button" value="next" ng-disabled = "(currval *5)+5 >= (Details | filter : searchText | filter : {approved : statusSearch}).length" ng-click = "currval = currval+1" /></div>
+  </div></div>
