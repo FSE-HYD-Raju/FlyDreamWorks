@@ -2,94 +2,118 @@
 <head>
     <meta charset="utf-8">
     <link href="../css/General/bootstrap.min.css" rel="stylesheet">
-    <script src="../Scripts/Angualr/angular.min.js"></script>
-    <script src="../Scripts/Angualr/angular-route.min.js"></script>
-    <script src="../Scripts/Application/admin.js"></script>
+	<link href="../css/custom.min.css" rel="stylesheet">
   </head>
-  <style>
-  .info-card {
-    float: left;
-  margin: 10px;
-  -webkit-perspective: 400px;
-  }
-  .front, .back {
-  background: #FFF;
-  border-radius: 10px;
-  transition: -webkit-transform 1s;
-  -webkit-transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  border: 1px solid black;
-  }
+ <body class="nav-md" ng-controller="AdminHomeCtrl" >
 
-  .front {
-  overflow: hidden;
-  width: 230px;
-  height: 150px;
-  position: absolute;
-  z-index: 1;
-  }
+     <div class="container body">
 
-  .back {
-  padding: 20px;
-  padding-top: 0px;
-  width: 230px;
-  height: 150px;
-  -webkit-transform: rotateY(-180deg);
-  overflow: scroll;
-  }
+		  <div class="main_container" ng-hide = {{logoutvar}}>
+			<div class="col-md-3 left_col">
+			  <div class="left_col scroll-view">
+				<div class="navbar nav_title" style="border: 0;">
+				   <span class="site_title">Fly Dream Works</span>
+				</div>
 
-  .info-card:hover .back {
-  -webkit-transform: rotateY(0);
-  }
+				<div class="clearfix"></div>
+				 <div class="profile_pic">
+					<img src="../Images/img.jpg" alt="..." class="img-circle profile_img">
+				  </div>
+				<!-- menu profile quick info -->
+				<div class="profile clearfix">
+				  <div class="profile_info">
+					<span>Welcome,</span>
+					<h2 ng-bind="user"></h2>
+				  </div>
+				</div>
+				<!-- /menu profile quick info -->
 
-  .info-card:hover .front {
-  -webkit-transform: rotateY(180deg);
-  }
-  </style>
+				<br />
 
-<body ng-controller = "AdminHomeCtrl">
-<h1 align = "right"> User: {{user}}</h1>
+				<!-- sidebar menu -->
+				<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+				  <div class="menu_section">
+					<h3>General</h3>
+					<ul class="nav side-menu">
+					  <li><a href="#/orderslist"><i class="fa fa-home"></i> Orders <span class="fa fa-chevron-down"></span></a>
+					  </li>
+            <li><a href="#/eventslist"><i class="fa fa-home"></i> Events <span class="fa fa-chevron-down"></span></a>
+					  </li>
+            <li><a href="#/addevents"><i class="fa fa-home"></i>Add New Event<span class="fa fa-chevron-down"></span></a>
+					  </li>
+					</div>
+				</div>
+				<!-- /sidebar menu -->
 
-<div class="row">
-	<div class="col-md-3">
-  <ul class="nav nav-pills nav-stacked">
-  <li role="presentation" class="active"><a href="#/orderslist">Get Orders List</a></li>
-  <li role="presentation"><a href="#/addevents">Add New Events</a></li>
-</ul>
-</div>
-<div class="col-md-9">
-  <div class="row">
-    <div class="col-md-12">
-      <div ng-controller="orderslistctrl">
-        <div class="info-card">
-              <div class="front">
-              order Count
-              </div>
-            <div class="back">
-          {{orderCount}}
-            </div>
-          </div>
-          <div class="info-card">
-                <div class="front">
-                order Count
-                </div>
-              <div class="back">
-            {{orderCount}}
-              </div>
-            </div>
-            <div class="info-card">
-                  <div class="front">
-                  order Count
-                  </div>
-                <div class="back">
-              {{orderCount}}
-                </div>
-              </div>
-        </div>
-      <br><br>
-  </div>
-	 <div ng-view></div>
- </div>
- </div>
- </body>
+			  </div>
+			</div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+			  <div class="nav_menu">
+				<nav>
+				  <div class="nav toggle">
+					<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+				  </div>
+
+				  <ul class="nav navbar-nav navbar-right">
+					<li class="">
+					  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<img src="../Images/img.jpg" alt=""><span ng-bind="user"></span>
+						<span class=" fa fa-angle-down"></span>
+					  </a>
+					  <ul class="dropdown-menu dropdown-usermenu pull-right">
+						<li><a href="javascript:;"> Profile</a></li>
+						<li><a href="javascript:;">Help</a></li>
+						<li><a ng-href="#" ng-click = "logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+					  </ul>
+					</li>
+				  </ul>
+				</nav>
+			  </div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main" ng-controller="orderslistctrl" >
+			  <!-- top tiles -->
+			  <div class="row tile_count">
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+				  <span class="count_top"><i class="fa fa-user"></i> Total Orders</span>
+				  <div class="count">{{orderCount}}</div>
+				</div>
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+				  <span class="count_top"><i class="fa fa-clock-o"></i> Approved Orders</span>
+				  <div class="count green">{{approvedorderCount}}</div>
+				</div>
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+				  <span class="count_top"><i class="fa fa-user"></i> Rejected Orders</span>
+				  <div class="count red">{{rejectedordersCount}}</div>
+				</div>
+				<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+				  <span class="count_top"><i class="fa fa-user"></i> Unseen Orders</span>
+				  <div class="count">{{unseenordersCount}}</div>
+				</div>
+				<br><br>
+			<ng-view></ng-view>
+				</div>
+			  </div>
+				<!-- jQuery -->
+		<script src="../Scripts/admin/jquery.min.js"></script>
+    <script src="../Scripts/Angualr/angular.min.js"></script>
+
+  <script src="../Scripts/Angualr/angular-route.min.js"></script>
+  <script src="../Scripts/Application/admin.js"></script>
+  	<!-- Bootstrap -->
+		<script src="../Scripts/admin/bootstrap.min.js"></script>
+
+
+	<!-- Custom Theme Scripts -->
+		<script src="../Scripts/admin/custom.min.js"></script>
+			</div>
+      <div ng-show = {{logoutvar}}>
+    <center>  <h1>  Please login again</h1></center>
+      </div>
+			<!-- /page content -->
+	  </body>
 </html>

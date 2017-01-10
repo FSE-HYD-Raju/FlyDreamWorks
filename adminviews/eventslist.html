@@ -1,0 +1,32 @@
+<div>
+<input type="text" ng-model="searchText" placeholder="Search" style = "float:right" ng-change = "currval = 0"/>
+<table  class="table table-striped table-hover">
+  <thead><tr>
+    <th><a id="event name" href="" ng-click="orderText = 'event_name' ; sortReverse = !sortReverse">
+            Event Name<span ng-show = "sortReverse"><img src = "../Images/up.png" width = "30" height = "30"></span>
+                      <span ng-show = "!sortReverse"><img src ="../Images/down.png" width="30" height = "30"></span>
+</a>
+  </th>
+  <th>
+<b>    Event Description</b>
+  </th>
+  <th><b>PriceDesc</b></th>
+  <th><b>Contact</b></th>
+  </thead>
+  <tbody class="accordion-toggle" ng-repeat="det in event_det | filter : searchText | orderBy:orderText:sortReverse | startFrom : currval*5 | limitTo:5"><tr>
+    <td>{{det.event_name}}</td>
+    <td>{{det.event_desc}}</td>
+    <td>{{det.PriceDesc}}</td>
+    <td>{{det.Contact}}</td>
+</tr>
+  </div></td>
+</tr>
+</tbody>
+</table>
+<div class= "row">
+  <div class = "col-md-4">
+<input type="button" value="Pervious" ng-disabled = "currval == 0"   ng-click="currval = currval-1"/></div>
+<div class= "col-md-4"><span> Page <input type = "text" ng-model = "currval"> of {{((event_det | filter : searchText).length/5)-0.1 | floor}} </span></div>
+<div class = "col-md-4"><input type="button" value="next" ng-disabled = "(currval *5)+5 >= (event_det | filter : searchText).length" ng-click = "currval = currval+1" /></div>
+</div>
+</div>
