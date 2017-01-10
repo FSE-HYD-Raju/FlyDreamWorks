@@ -2,16 +2,26 @@
 
 
 <!-- <div ng-include src = "'Views/LoginRegTab.html'"></div> -->
+
 <div >
-<div id="loginMenuTab">
-  <div class="dropdown" >
-    <span class="dropbtn"><i class="fa fa-bars" aria-hidden="true" ></i></span>
-    <div class="dropdown-content">
+<div id="loginMenuTab" >
+  <div class="dropdown"   >
+    <a class="dropdown-toggle dropbtn" href="" data-toggle="dropdown">
+      <i class="fa fa-align-justify" aria-hidden="true"/></a>
+
+    <div class="dropdown-content" >
       <span ng-switch="!!LoginRegModal.UserDetails">
         <span ng-switch-when="false">
-          <a href data-toggle="modal" data-target="#loginModal" ng-click="LoginRegModal.logintab = true" >Login</a>
-          <a href data-toggle="modal" data-target="#loginModal"   ng-click="LoginRegModal.logintab = false" >Register</a>
+          <div>
+          <a href data-toggle="modal" data-target="#loginModal"
+          ng-click="LoginRegModal.logintab = true" ><i class="fa fa-sign-in" aria-hidden="true"/> Login</a>
+        </div>
+        <div>
+          <a href data-toggle="modal" data-target="#loginModal"
+          ng-click="LoginRegModal.logintab = false" ><i class="fa fa-id-badge" aria-hidden="true"/> Register</a>
+        </div>
         </span>
+
         <span ng-switch-when="true">
           <br>
           <p >&nbsp; Hello {{LoginRegModal.UserDetails.cust_name}} </p>
@@ -37,10 +47,10 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-6">
-                    <p ng-click = "LoginRegModal.logintab = true"  ng-class="{'active': logintab == true}" id="login-form-link" style="cursor:pointer">Login</p>
+                    <p ng-click = "LoginRegModal.logintab = true"  ng-class="{active: logintab == true}" id="login-form-link" >Login</p>
                   </div>
                   <div class="col-xs-6">
-                    <p ng-click = "LoginRegModal.logintab = false"   ng-class="{'active': logintab == true}"  id="register-form-link" style="cursor:pointer">Register</p>
+                    <p ng-click = "LoginRegModal.logintab = false"   ng-class="{active: logintab == true}"  id="register-form-link" >Register</p>
                   </div>
                 </div>
 
@@ -53,7 +63,7 @@
                       <div ng-switch-when=true>
                         <form id="login-form"  ng-submit="LoginRegModal.custlogin()">
                           <div class="form-group">
-                            <input type="email"  id="emailid" required ng-model="LoginRegModal.username" class="form-control" placeholder="Email Id" >
+                            <input type="email"  id="emailid" autofocus="autofocus" required ng-model="LoginRegModal.username" class="form-control" placeholder="Email Id" >
                           </div>
                           <div class="form-group">
                             <input type="password"  id="password" required ng-model="LoginRegModal.password" class="form-control" placeholder="Password">
@@ -85,7 +95,7 @@
               <div ng-switch-when=false>
                 <form id="register-form" name="regform" ng-submit="LoginRegModal.saveCustomer()">
                   <div class="form-group">
-                    <input type="text"  id="username" required class="form-control" ng-model="LoginRegModal.Regusername" placeholder="Username" >
+                    <input type="text"  id="username" autofocus="autofocus" required class="form-control" ng-model="LoginRegModal.Regusername" placeholder="Username" >
                   </div>
                   <div class="form-group">
                     <input type="email"  id="email" required class="form-control" ng-model="LoginRegModal.Regemail" placeholder="Email Address" >

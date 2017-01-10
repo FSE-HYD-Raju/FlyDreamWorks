@@ -1,7 +1,80 @@
 
 
+<div class="container text-center">
+  <h1 class="BookPageTitle">Your Special Day</h1>
+  <hr />
+  <br>
+  <br>
+</div>
+<div class="row">
+  <div class="col-md-offset-1 col-md-5">
+    <div id="datetimepicker12" ></div>
+    <br>
 
-    <div class="container" >
+    <div class="col-md-offset-2 col-md-7">
+      <pre>  Date: {{order.event_date}}   Time : {{order.event_time}}</pre>
+    </div>
+  </div>
+
+    <div class="col-md-4">
+      <form class="form-horizontal" ng-submit="saveOrders()">
+        <div  class="col-md-offset-4">
+          <div class="form-group">
+            <label for="state" class="cols-sm-2 control-label">state</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" required id="state" placeholder="Enter your State" ng-model="order.state"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="city" class="cols-sm-2 control-label">city</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-home fa-lg" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" required id="city" placeholder="Enter your city" ng-model="order.city"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="place" class="cols-sm-2 control-label">Event Place</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" required id="place" placeholder="Enter your Address" ng-model="order.event_place" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pincode" class="cols-sm-2 control-label">Pincode</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar  fa-lg" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" required id="pincode" placeholder="Enter your pincode" ng-model="order.pincode"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-sm btn-block" value="Book"/>
+          </div>
+        </div>
+      </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container" >
       <div class="row main">
         <div class="panel-heading">
           <div class="panel-title text-center">
@@ -19,6 +92,8 @@
                   </div>
             </div>
           </form>
+
+
           <form class="form-horizontal" ng-submit="saveOrders()">
             <div style="width:20%" class="col-md-offset-4">
               <div class="form-group">
@@ -64,7 +139,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
     <!-- /*<style>

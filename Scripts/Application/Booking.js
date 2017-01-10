@@ -57,8 +57,8 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil)
 	console.log(JSON.parse(StorageUtil.getItem("UserDetails")).cust_id);
 
    $scope.order = {};
-	 $scope.order.event_date = null;
-	 $scope.order.event_time = null;
+	 $scope.order.event_date = new Date().toISOString().substring(0, 10);
+	 $scope.order.event_time = new Date().toTimeString().split(' ')[0];
 
 	//  date code
 	$('#datetimepicker12').datetimepicker({
@@ -66,11 +66,15 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil)
 		sideBySide: true
 	});
 	$("#datetimepicker12").on("dp.change", function (e) {
+
 		var d = new Date(e.date._d);
 		console.log(d.toISOString().substring(0, 10));
-		$scope.order.event_date = d.toISOString().substring(0, 10) ;
-		console.log(d.toTimeString().split(' ')[0]);
-		$scope.order.event_time = d.toTimeString().split(' ')[0] ;
+		$scope.$apply(function(){
+			$scope.order.event_date = d.toISOString().substring(0, 10) ;
+			console.log(d.toTimeString().split(' ')[0]);
+			$scope.order.event_time = d.toTimeString().split(' ')[0] ;
+		})
+
 	});
 
 	$scope.saveOrders = function(){

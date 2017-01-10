@@ -1,66 +1,72 @@
-﻿
+
 body {
-    overflow-x:hidden;
+  overflow-x:hidden;
+}
+
+.menuItemsLogin{
+  text-align: center;
+  padding-top: 0.7%;
+  margin-right: 1%;
 }
 
 div.menuItems:hover,  .myhover {
-    border: 1px rgba(8, 117, 31, 0.72) solid;
-    cursor: pointer;
+  border: 1px rgba(8, 117, 31, 0.72) solid;
+  cursor: pointer;
 }
 
 div.menuItems:active {
-    border: 1px rgba(8, 117, 31, 0.72) solid;
+  border: 1px rgba(8, 117, 31, 0.72) solid;
 }
 
 /*#menu a:active, #menu a:hover {
-    border: 1px rgba(8, 117, 31, 0.72) solid;
-    cursor: pointer;
+border: 1px rgba(8, 117, 31, 0.72) solid;
+cursor: pointer;
 }*/
 .menuItems {
-    text-align: center;
-    padding-top: 0.7%;
-    margin-right: 1%;
-    font: normal normal normal 13px/1.4em raleway,sans-serif;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  text-align: center;
+  padding-top: 0.7%;
+  margin-right: 1%;
+  font: normal normal normal 13px/1.4em raleway,sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
 }
 
 #menu {
-    margin-top: 2%;
-    margin-bottom: 2%;
-    /* overflow: hidden; */
+  margin-top: 2%;
+  margin-bottom: 2%;
+  /* overflow: hidden; */
 }
 
 .carouselItems {
-    object-fit: cover;
-    width: 100%;
-    height: 600px !important;
+  object-fit: cover;
+  width: 100%;
+  height: 600px !important;
 }
 
 .carousel-control {
-    width: 8%;
-    opacity: 0.7;
-    padding-top: 15%;
+  width: 8%;
+  opacity: 0.7;
+  padding-top: 15%;
 }
 
 #aboutMeImage {
-    height: auto;
-    width: 50%;
-    position: fixed;
+  height: auto;
+  width: 50%;
+  position: fixed;
 }
 
 #aboutMeText {
-    font-family: monospace;
-    color: #8e5c21;
-    font-size: x-large;
+  font-family: monospace;
+  color: #8e5c21;
+  font-size: x-large;
 }
 
 .aboutMe hr {
-    margin-top: 2px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #732323;
-    width: 97%;
-    margin-left: 0px !important;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #732323;
+  width: 97%;
+  margin-left: 0px !important;
 }
 
 .aboutMe{
@@ -68,28 +74,28 @@ div.menuItems:active {
 }
 
 #eventsPageTItle{
-    text-align: -webkit-center;
-       color: rgba(123, 63, 39, 0.81)
+  text-align: -webkit-center;
+  color: rgba(123, 63, 39, 0.81)
 }
 
 #eventsPagePanel{
-    height: 150pt;
+  height: 150pt;
 }
 
 #eventsPagePanel:hover{
-    box-shadow: 11px 11px 25px #b3c5a2;
+  box-shadow: 11px 11px 25px #b3c5a2;
 }
 
 
 #eventsPage .panel-primary .panel-heading {
-text-align:center;
-background-color:rgba(11, 102, 105, 0.98);
-background-image:none;
-font-size: large;
+  text-align:center;
+  background-color:rgba(11, 102, 105, 0.98);
+  background-image:none;
+  font-size: large;
 }
 
 #eventsDetailsPage{
-margin-top:2%;
+  margin-top:2%;
 }
 
 #eventDetailsForm{
@@ -98,61 +104,75 @@ margin-top:2%;
 }
 
 #eventsDetailsBookBtn{
-	margin-top:5%;
+  margin-top:5%;
 }
 
 
 #loginMenuTab .dropbtn {
-    /* background-color: #4CAF50; */
-    /* color: white; */
-    /* padding: 16px; */
-    /* font-size: 16px; */
-    /* border: none; */
-    cursor: pointer;
+  /* background-color: #4CAF50; */
+  /* color: white; */
+  /* padding: 16px; */
+  /* font-size: 16px; */
+  /* border: none; */
+  /*cursor: pointer;
 
-	text-align: center;
-    padding-top: 0.7%;
-    margin-right: 1%;
-    font: normal normal normal 13px/1.4em raleway,sans-serif;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  text-align: center;
+  padding-top: 0.7%;
+  margin-right: 1%;
+  font: normal normal normal 13px/1.4em raleway,sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);*/
 
 }
 
 #loginMenuTab .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 #loginMenuTab .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index:1;
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: rgb(221, 241, 202);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
 }
 
 #loginMenuTab .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 11%;
+  text-decoration: none;
+  display: block;
 }
 
-#loginMenuTab .dropdown-content a:hover {background-color: #f1f1f1}
+#loginMenuTab .dropdown-content a:hover
+{ background-color: #97d298;}
 
-#loginMenuTab .dropdown:hover .dropdown-content {
-    display: block;
+#loginMenuTab .dropdown.open .dropdown-content {
+  display: block;
 }
 
 #loginMenuTab .dropdown:hover .dropbtn {
-    /* background-color: #3e8e41; */
-	border: 1px rgba(8, 117, 31, 0.72) solid;
-    cursor: pointer;
+  /* background-color: #3e8e41; */
+  /*border: 1px rgba(8, 117, 31, 0.72) solid;*/
+  cursor: pointer;
 }
 
+#login-submit, #register-submit{
+  border-color: rgba(54, 144, 28, 0.46);
+
+}
+
+#login-form-link , #register-form-link {
+  cursor:pointer;
+  font-size: large;
+  font-family: cursive;
+}
+#login-form-link.active{
+  background: blue;
+}
 
 /*.has-error{
-  background-color: black;
+background-color: black;
 }*/
