@@ -15,7 +15,7 @@ app.factory("getcustcredentials",function($http){
 
 
 
-app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact, StorageUtil){
+app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact, StorageUtil, $location){
 	var LoginRegModal = this;
 
 
@@ -93,6 +93,7 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 		LoginRegModal.UserDetails = 0;
 		StorageUtil.setItem("UserDetails", 0);
 		cleardata();
+		$location.path('/home');
 	}
 });
 

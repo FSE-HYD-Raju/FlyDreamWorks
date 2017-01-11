@@ -1,17 +1,49 @@
 
-  <div class="container">
-  
+<div class="container">
+
   <p > <h3 id="eventsPageTItle"> Let us know what fun is ahead in your life </h3> </p>
   <hr>
   <br>
   <br>
-  
-  <div class="row" >
-  <div class="col-md-4" ng-repeat="event in Events" id="eventsPage">
-    <div id="eventsPagePanel" ng-click="eventSelected(event)" class="panel panel-primary" >
-      <div class="panel-heading"><p ng-bind="event.event_name"/></div>
-      <div class="panel-body"><p ng-bind="event.event_desc"/></div>
-    </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4" ng-repeat="event in Events">
+        <div class="card" ng-click="eventSelected(event)">
+          <a class="img-card" href="">
+            <img ng-src="{{event.Image}}" />
+          </a>
+          <br />
+          <div class="card-content">
+            <h4 class="card-title">
+              <a href="">
+                <p ng-bind="event.event_name"/>
+              </a>
+            </h4>
+            <div class="">
+              <p ng-bind="event.event_desc"/>
+            </div>
+          </div>
+          <div class="card-read-more">
+            <a class="btn btn-link btn-block" href="" ng-click="eventSelected(event)">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- <div  class="card" style="width: 20rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-block">
+  <h4 class="card-title">Card title</h4>
+  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+</div>
+</div> -->
+<!-- <div id="eventsPagePanel" ng-click="eventSelected(event)" class="panel panel-primary" >
+<div class="panel-heading"><p ng-bind="event.event_name"/></div>
+<div class="panel-body"><p ng-bind="event.event_desc"/></div>
+</div> -->
 </div>

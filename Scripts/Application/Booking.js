@@ -63,7 +63,9 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil)
 	//  date code
 	$('#datetimepicker12').datetimepicker({
 		inline: true,
-		sideBySide: true
+		sideBySide: true,
+		minDate: moment()
+		// minDate:new date()
 	});
 	$("#datetimepicker12").on("dp.change", function (e) {
 

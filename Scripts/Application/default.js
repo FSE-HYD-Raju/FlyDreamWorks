@@ -25,7 +25,7 @@ app.controller('defaultController', function ($scope, $location, $route, $rootSc
   $rootScope.$on("$locationChangeStart", function (event, next, current) {
   var index = next.indexOf("bookOnline");
     if (StorageUtil.getItem("UserDetails") == "0" && index >= 0 ) {
-      $location.path('/home');
+      $scope.Route('/home');
 
     }
     console.log(next);

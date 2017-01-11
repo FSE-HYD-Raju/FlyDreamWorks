@@ -7,46 +7,51 @@
 <!-- "Contact":null,"$$hashKey":"object:52"} -->
 
 <div id="eventsDetailsPage" class="container">
-<p > <h3> Details </h3> </p>
-<hr>
-<div>
-<div class = "col-md-10 container">
-<form class="form-horizontal" id="eventDetailsForm" >
-    <div class="form-group">
-      <label class="control-label col-sm-4" for="eventname">Event : </label>
-      <div class="col-sm-8">
-       <p class="form-control-static" id="eventname" > <span ng-bind="Event.event_name" /> </p>
-      </div>
-    </div>
-	<div class="form-group">
-      <label class="control-label col-sm-4" for="eventdesc">Event Description : </label>
-      <div class="col-sm-8">
-       <p class="form-control-static" id="eventdesc" > <span ng-bind="Event.event_desc" /> </p>
-      </div>
-    </div>
-   <div class="form-group">
-      <label class="control-label col-sm-4" for="eventPrice">Price Details : </label>
-      <div class="col-sm-8">
-       <p class="form-control-static" id="eventPrice" > <span ng-bind="Event.PriceDesc" /> </p>
-      </div>
-    </div>
-	<div class="form-group">
-      <label class="control-label col-sm-4" for="eventcontact">Contact : </label>
-      <div class="col-sm-8">
-       <p class="form-control-static" id="eventcontact" > <span ng-bind="Event.Contact" /> </p>
-      </div>
-    </div>
-   </form>
+  <div class="row">
+    <span class="col-md-3"> <h3> Details </h3> </span>
   </div>
+  <hr>
+  <div>
+    <div class = "col-md-10 container">
+      <form class="form-horizontal" id="eventDetailsForm" >
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="eventname">Event : </label>
+          <div class="col-sm-8">
+            <p class="form-control-static" id="eventname" > <span ng-bind="Event.event_name" /> </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="eventdesc">Event Description : </label>
+          <div class="col-sm-8">
+            <p class="form-control-static" id="eventdesc" > <span ng-bind="Event.event_desc" /> </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="eventPrice">Price Details : </label>
+          <div class="col-sm-8">
+            <p class="form-control-static" id="eventPrice" > <span ng-bind="Event.PriceDesc" /> </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="eventcontact">Contact : </label>
+          <div class="col-sm-8">
+            <p class="form-control-static" id="eventcontact" > <span ng-bind="Event.Contact" /> </p>
+          </div>
+        </div>
 
-  <div class = "col-sm-2">
-   <img ng-src="Images/anime.jpg" />
-   </div>
-   </div>
+      </form>
+    </div>
+
+    <div class = "col-sm-2">
+      <img ng-src="Images/anime.jpg" />
+    </div>
+  </div>
 
 
 
 </div>
- <div class = "col-md-offset-4" id="eventsDetailsBookBtn">
+<div class = "col-md-offset-4" id="eventsDetailsBookBtn">
+  <a href="" ng-click="Route('BookNow')" class="col-md-2"><h4><i class="fa fa-reply-all" aria-hidden="true"></i> Back </h4> </a>
+
   <button class = "btn btn-md btn-primary" ng-click = "makeABooking()"> Make A Booking </button>
-  <div>
+</div>
