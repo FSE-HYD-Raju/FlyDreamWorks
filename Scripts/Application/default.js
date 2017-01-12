@@ -14,8 +14,8 @@ app.controller('defaultController', function ($scope, $location, $route, $rootSc
     StorageUtil.setItem("UserDetails", 0);
   }
   $scope.links = [
+    { src: "Images/Background1.jpg", alt: "", caption: "" },
     { src: "Images/booking-Photographer.jpg", alt: "", caption: "" },
-    { src: "Images/onMountain.jpg", alt: "", caption: "" },
     { src: "Images/holdingHand.jpg", alt: "", caption: "" },
     { src: "Images/average_wedding_cost.jpg", alt: "", caption: "" },
     { src: "Images/Table.jpg", alt: "", caption: "" },
@@ -44,7 +44,7 @@ app.directive('carousel', function($timeout) {
 
       $(document).ready(function() {
         $('.carousel').carousel({
-          interval: 2000
+          interval: 5000
         })
       });
 

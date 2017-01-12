@@ -11,7 +11,12 @@
 </head>
 <body ng-controller="defaultController" ng-cloak style="background-image:url(Images/Background1.jpg)">
   <div id="menu">
-    <div class="row col-md-offset-3">
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-2">
+        <!-- <img src="Images\Photographer-Logo.jpg" style="height:50px;width:100%"> -->
+      </div>
+      <div class="col-md-offset-3">
       <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
         <p><i class="fa fa-home" aria-hidden="true"></i> HOME</p>
       </div>
@@ -38,7 +43,7 @@
 
         </div>
       </div>
-
+    </div>
     </div>
 
     <ng-view></ng-view>
