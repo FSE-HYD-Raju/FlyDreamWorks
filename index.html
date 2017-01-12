@@ -9,7 +9,7 @@
   <link href="CSS/General/font-awesome.min.css" rel="stylesheet" />
   <link href="CSS/Application.css" rel="stylesheet" />
 </head>
-<body ng-controller="defaultController" ng-cloak>
+<body ng-controller="defaultController" ng-cloak style="background-image:url(Images/Background1.jpg)">
   <div id="menu">
     <div class="row col-md-offset-3">
       <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
@@ -25,43 +25,43 @@
         <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK NOW</p>
       </div>
       <!-- <div class="menuItems col-md-2" ng-click="Route('bookOnline')" ng-class="{'myhover': route.current.activetab == 'bookOnline'}">
-      <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK ONLINE</p>
-    </div> -->
-    <!-- <div class="menuItems col-md-2" ng-click="Route('custRegister')" ng-class="{'myhover': route.current.activetab == 'custRegister'}"> -->
-    <!-- <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p> -->
-    <!-- </div> -->
+        <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK ONLINE</p>
+      </div> -->
+      <!-- <div class="menuItems col-md-2" ng-click="Route('custRegister')" ng-class="{'myhover': route.current.activetab == 'custRegister'}"> -->
+        <!-- <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p> -->
+        <!-- </div> -->
 
-    <div class = "menuItemsLogin col-md-2">
-      <!-- <login-tab></login-tab>  -->
+        <div class = "menuItemsLogin col-md-2">
+          <!-- <login-tab></login-tab>  -->
 
-      <loginreg-modal> </loginreg-modal>
+          <loginreg-modal> </loginreg-modal>
+
+        </div>
+      </div>
 
     </div>
-  </div>
 
-</div>
+    <ng-view></ng-view>
 
-<ng-view></ng-view>
+    <script src="Scripts/General/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/Angualr/angular.min.js"></script>
+    <script src="Scripts/Angualr/angular-route.min.js"></script>
+    <script src="Scripts/Angualr/angular-animate.min.js"></script>
 
-<script src="Scripts/General/jquery-3.1.1.min.js"></script>
-<script src="Scripts/Angualr/angular.min.js"></script>
-<script src="Scripts/Angualr/angular-route.min.js"></script>
-<script src="Scripts/Angualr/angular-animate.min.js"></script>
-
-<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script> -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script> -->
 
 
-<script src="Scripts/General/bootstrap.min.js"></script>
-<script src="Scripts/General/ui-bootstrap-tpls-2.2.0.min.js"></script>
+    <script src="Scripts/General/bootstrap.min.js"></script>
+    <script src="Scripts/General/ui-bootstrap-tpls-2.2.0.min.js"></script>
 
-<script src="scripts/DatePicker/moment.min.js"></script>
-<link href="scripts/DatePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<script src="scripts/DatePicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="scripts/DatePicker/moment.min.js"></script>
+    <link href="scripts/DatePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="scripts/DatePicker/bootstrap-datetimepicker.min.js"></script>
 
 
-<script src="Scripts/Application/App.js"></script>
-<script src="Scripts/Application/default.js"></script>
-<script src = "Scripts/Application/LoginRegModal.js"></script>
-<script src="Scripts/Application/Booking.js"></script>
-</body>
-</html>
+    <script src="Scripts/Application/App.js"></script>
+    <script src="Scripts/Application/default.js"></script>
+    <script src = "Scripts/Application/LoginRegModal.js"></script>
+    <script src="Scripts/Application/Booking.js"></script>
+  </body>
+  </html>
