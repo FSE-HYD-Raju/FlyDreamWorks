@@ -20,6 +20,9 @@
       <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
         <p><i class="fa fa-home" aria-hidden="true"></i> HOME</p>
       </div>
+        <div class="menuItems col-md-2" ng-click="Route('gallery')" ng-class="{'myhover': route.current.activetab == 'gallery'}">
+          <p><i class="fa fa-image" aria-hidden="true"></i>GALLERY</p>
+        </div>
       <div class="menuItems col-md-2" ng-click="Route('about')" ng-class="{'myhover': route.current.activetab == 'about'}">
         <p><i class="fa fa-user" aria-hidden="true"></i> ABOUT</p>
       </div>
@@ -36,7 +39,7 @@
         <!-- <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p> -->
         <!-- </div> -->
 
-        <div class = "menuItemsLogin col-md-2">
+        <div class = "menuItemsLogin col-md-0">
           <!-- <login-tab></login-tab>  -->
 
           <loginreg-modal> </loginreg-modal>

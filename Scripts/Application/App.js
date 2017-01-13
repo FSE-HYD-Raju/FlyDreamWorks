@@ -33,6 +33,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     templateUrl: 'Views/Home.html',
     controller: 'defaultController',
     activetab: 'home'
+  }).
+  when('/gallery', {
+      templateUrl: 'Views/photos.html',
+      controller: 'defaultController',
+      activetab: 'gallery'
   }).when('/about', {
     templateUrl: 'Views/About.html',
     controller: 'defaultController',
