@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="Gal">
+<head>
+    <title>Gallery</title>
+
+
+    <!-- Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script src="https://rawgit.com/hammerjs/hammer.js/v2.0.8/hammer.min.js"></script>
+
+    <!-- Module files-->
+    <script src="../dist/ng-image-gallery.min.js"></script>
+    <link href="../dist/ng-image-gallery.min.css" rel="stylesheet"/>
+    <script src="../Scripts/Application/media.js"></script>
+
+</head>
+<body ng-controller="main">
+<h1>My Photography</h1>
+<ng-image-gallery images="images" bg-close="bgClose" on-open="opened();" on-close="closed();" bg-close="false"></ng-image-gallery>
+
+
+</body>
+</html>
