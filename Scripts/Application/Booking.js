@@ -141,7 +141,7 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil, addCu
 
   $scope.successs = function(){
 		$scope.Route('SuccessPage');
-		
+
 	}
 
 	$scope.today = function() {
@@ -155,7 +155,9 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil, addCu
 
 	$scope.options = {
 		customClass: getDayClass,
-		minDate: new Date(),
+		// minDate: new Date(),
+		minDate: moment().startOf('day').add(1, 'd'),
+		// minDate: moment().millisecond(0).second(0).minute(0).hour(0),
 		showWeeks: true
 	};
 

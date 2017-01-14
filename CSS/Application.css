@@ -256,3 +256,10 @@ background-color: black;rgb(255, 245, 224)
   font-weight:600;
   text-transform: uppercase
 }
+
+#successImage{
+  margin-left: 9%;
+  width: 83%;
+  height: 38em;
+  margin-top: 2%;
+}
