@@ -112,7 +112,7 @@
 			}
 			$email =  $this->_request['email'];
 			$password =   $this->_request['password'];
-			$query="SELECT * FROM customers where email_id = $email and password=$password";
+			$query="SELECT cust_id, cust_name, email_id, organization_name, phoneNumber FROM customers where email_id = $email and password=$password";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
@@ -147,7 +147,7 @@
 				$this->response('',406);
 			}
 			$customer = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('cust_name','password','email_id','organization_name');
+			$column_names = array('cust_name','password','email_id','phoneNumber','organization_name');
 			$keys = array_keys($customer);
 			$columns = '';
 			$values = '';
@@ -202,7 +202,7 @@ private function insertorders(){
 				$this->response('',406);
 			}
 			$events = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('event_id','event_date','event_time','event_place','cust_id', 'state','city','pincode');
+			$column_names = array('event_id','event_date','event_time','event_place','cust_id', 'event_desc','city','pincode');
 			$keys = array_keys($events);
 			$columns = '';
 			$values = '';

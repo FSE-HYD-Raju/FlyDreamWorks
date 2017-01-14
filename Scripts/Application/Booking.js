@@ -31,11 +31,12 @@ app.controller('eventDetailsPageCtrl',function($scope, $location, StorageUtil){
 	$scope.makeABooking = function(){
 		$scope.userDetails = StorageUtil.getItem("UserDetails");
 		console.log($scope.userDetails);
-		if($scope.userDetails != "0"){
-			$scope.Route('bookOnline');
-		} else {
-			$('#loginModal').modal('show');
-		}
+		// if($scope.userDetails != "0"){
+		// 	$scope.Route('bookOnline');
+		// } else {
+		// 	$('#loginModal').modal('show');
+		// }
+		$scope.Route('bookOnline');
 	}
 
 });
@@ -43,22 +44,26 @@ app.controller('eventDetailsPageCtrl',function($scope, $location, StorageUtil){
 
 app.factory("addOrdersFact",function($http)
 {
-			var fun = {};
-			fun.insertordersfun = function (order) {
-				return $http.post('services/insertOrders',order);
-			}
+	var fun = {};
+	fun.insertordersfun = function (order) {
+		return $http.post('services/insertOrders',order);
+	}
 	return fun;
 });
 
 
-app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil)
+app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil, addCustsFact, getcustcredentials, $rootScope)
 {
 	console.log(JSON.parse(StorageUtil.getItem("SelectedEvent")).event_id);
-	console.log(JSON.parse(StorageUtil.getItem("UserDetails")).cust_id);
+	console.log("user "+JSON.parse(StorageUtil.getItem("UserDetails")).cust_id);
+  $scope.UserDetails = JSON.parse(StorageUtil.getItem("UserDetails"));
 
-   $scope.order = {};
-	 $scope.order.event_date = new Date().toISOString().substring(0, 10);
-	 $scope.order.event_time = new Date().toTimeString().split(' ')[0];
+	$rootScope.$on('UserLoginChanged', function(event, UserDetails){
+  $scope.UserDetails = UserDetails;
+});
+	$scope.order = {};
+	$scope.order.event_date = new Date().toISOString().substring(0, 10);
+	$scope.order.event_time = new Date().toTimeString().split(' ')[0];
 
 	//  date code
 	$('#datetimepicker12').datetimepicker({
@@ -79,19 +84,65 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil)
 
 	});
 
-	$scope.saveOrders = function(){
-		$scope.order.event_id = JSON.parse(StorageUtil.getItem("SelectedEvent")).event_id;
-		$scope.order.cust_id = JSON.parse(StorageUtil.getItem("UserDetails")).cust_id;
-		console.log(JSON.stringify($scope.order));
 
-		addOrdersFact.insertordersfun($scope.order).then(function(res) {
+	$scope.customer = {};
+
+	var checkLogin = function(data){
+		getcustcredentials.custlogindets(data).then(function s1(res) {
+			console.log(JSON.stringify(res.data));
+			if(res.data != "") {
+				$scope.order.cust_id = res.data[0].cust_id;
+
+        console.log("cn "+$scope.order.cust_id);
+			} else {
+				// $scope.LoginFailed = true;
+				$scope.order.cust_id = null;
+			}
+
+		}, function e1(res) {
+			console.log("error");
+		});
+	}
+
+
+	$scope.saveOrders = function(){
+		if (StorageUtil.getItem("UserDetails") == "0"){
+
+			$scope.customer.cust_name ;
+			$scope.customer.email_id  ;
+			$scope.customer.password = "" ;
+      $scope.customer.phoneNumber;
+			addCustsFact.insertcustsfun($scope.customer).then(function s1(res) {
+				console.log(JSON.stringify(res));
+        checkLogin($scope.customer);
+			}, function e1(res) {
+				console.log("error");
+			});
+
+
+		} else {
+			$scope.order.cust_id = JSON.parse(StorageUtil.getItem("UserDetails")).cust_id;
+		}
+
+		$scope.order.event_id = JSON.parse(StorageUtil.getItem("SelectedEvent")).event_id;
+		console.log(JSON.stringify($scope.order));
+		insertOrder($scope.order);
+	}
+
+	var insertOrder = function(order){
+		addOrdersFact.insertordersfun(order).then(function(res) {
 			$scope.Details = res;
 			console.log("order placed" +JSON.stringify(res));
+			$scope.Route('SuccessPage');
 		},function(res) {
 			console.log("Error in inserting order");
 		});
 	}
 
+  $scope.successs = function(){
+		$scope.Route('SuccessPage');
+		
+	}
 
 	$scope.today = function() {
 		$scope.dt = new Date();

@@ -56,6 +56,10 @@ app.config(['$routeProvider', function ($routeProvider) {
   }).when('/custRegister',{
     templateUrl: 'Views/registerPage.html',
     controller: 'addCustsCtrl'
+  }).when('/SuccessPage',{
+    templateUrl: 'Views/successPage.html',
+    controller: 'successPageCtrl',
+    activetab: 'BookNow',
   }).otherwise({
     redirectTo: 'home'
   });

@@ -10,6 +10,7 @@ app.controller('defaultController', function ($scope, $location, $route, $rootSc
   $scope.Route = function (path) {
     $location.path(path);
   }
+  console.log("default user "+StorageUtil.getItem("UserDetails"));
   if(!StorageUtil.getItem("UserDetails")){
     StorageUtil.setItem("UserDetails", 0);
   }
@@ -22,14 +23,14 @@ app.controller('defaultController', function ($scope, $location, $route, $rootSc
   ];
   $scope.route = $route;
 
-  $rootScope.$on("$locationChangeStart", function (event, next, current) {
-  var index = next.indexOf("bookOnline");
-    if (StorageUtil.getItem("UserDetails") == "0" && index >= 0 ) {
-      $scope.Route('/home');
-
-    }
-    console.log(next);
-  });
+  // $rootScope.$on("$locationChangeStart", function (event, next, current) {
+  // var index = next.indexOf("bookOnline");
+  //   if (StorageUtil.getItem("UserDetails") == "0" && index >= 0 ) {
+  //     $scope.Route('/home');
+  //
+  //   }
+  //   console.log(next);
+  // });
 
 });
 
@@ -44,7 +45,7 @@ app.directive('carousel', function($timeout) {
 
       $(document).ready(function() {
         $('.carousel').carousel({
-          interval: 5000
+          interval: 3000
         })
       });
 

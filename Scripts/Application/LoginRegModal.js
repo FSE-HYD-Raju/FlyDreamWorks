@@ -15,7 +15,7 @@ app.factory("getcustcredentials",function($http){
 
 
 
-app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact, StorageUtil, $location){
+app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCustsFact, StorageUtil, $location, $rootScope, $route){
 	var LoginRegModal = this;
 
 
@@ -31,14 +31,14 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 	}
 
 
-	LoginRegModal.custlogin = function()
-	{
+	LoginRegModal.custlogin = function(){
 		var data = {};
 		data.email_id = LoginRegModal.username;
 		data.password = LoginRegModal.password;
 		checkLogin(data);
 	}
 	$scope.LoginFailed = false;
+
 	var checkLogin = function(data){
 		getcustcredentials.custlogindets(data).then(function s1(res) {
 			console.log(JSON.stringify(res.data));
@@ -48,7 +48,7 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 				console.log(JSON.stringify(res.data));
 				$('#loginModal').modal('hide');
 				$scope.LoginFailed = false;
-
+        $rootScope.$emit('UserLoginChanged', LoginRegModal.UserDetails);
 			} else {
 				$scope.LoginFailed = true;
 			}
@@ -93,8 +93,9 @@ app.controller('LoginRegModalCtrl',function($scope, getcustcredentials, addCusts
 		LoginRegModal.UserDetails = 0;
 		StorageUtil.setItem("UserDetails", 0);
 		cleardata();
-		$location.path('/home');
-	}
+		// $location.path('/home');
+$rootScope.$emit('UserLoginChanged', LoginRegModal.UserDetails);
+	};
 });
 
 
