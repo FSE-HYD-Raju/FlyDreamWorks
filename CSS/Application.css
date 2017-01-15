@@ -125,6 +125,22 @@ cursor: pointer;
   margin-top:5%;
 }
 
+#AboutPageTitle {
+  font:normal normal normal 33px/1.4em 'eb garamond',serif;
+  letter-spacing: 0.1em;
+}
+.AboutMeHeading{
+  color: #e3f311;
+  font-size: larger;
+}
+#contactImage{
+  margin-left: 9%;
+  width: 83%;
+  /*height: 38em;*/
+  margin-top: 2%;
+}
+
+
 .BookPageTitle{
   font:normal normal normal 40px/1.4em 'eb garamond',serif;
   letter-spacing: 0.1em;
@@ -257,9 +273,10 @@ background-color: black;rgb(255, 245, 224)
   text-transform: uppercase
 }
 
+
 #successImage{
   margin-left: 9%;
   width: 83%;
-  height: 38em;
+  /*height: 38em;*/
   margin-top: 2%;
 }
