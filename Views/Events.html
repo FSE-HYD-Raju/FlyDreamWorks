@@ -1,15 +1,14 @@
 
 <div class="container">
 
-  <p > <h3 id="eventsPageTItle"> Let us know what fun is ahead in your life </h3> </p>
+  <p > <h3 id="eventsPageTitle"> Let us know what fun is ahead in your life </h3> </p>
   <hr>
-  <br>
   <br>
 
 
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-4" ng-repeat="event in Events">
+      <div class="col-xs-12 col-sm-4"  ng-repeat="event in Events">
         <div class="card" id="eventsCards" ng-click="eventSelected(event)">
           <a class="img-card" href="">
             <img ng-src="{{event.Image}}" />
