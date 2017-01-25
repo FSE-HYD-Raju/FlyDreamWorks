@@ -147,8 +147,11 @@
 			events.created_date = today;
 			addEventsFact.inserteventsfun(events).success(function s1(res) {
 					$scope.Details = res;
-					alert(JSON.stringify(res));
+					$scope.success = true;
+					console.log($scope.success);
 				}).error(function e1(res) {
+				$scope.error = true;
+				console.log($scope.success);
 				});
 
 			}

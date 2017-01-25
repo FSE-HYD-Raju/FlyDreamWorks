@@ -1,9 +1,45 @@
-<html>
-<body>
-Event Name<input type="text" ng-model="events.event_name"> 
-Event Description<input type="text" ng-model="events.event_desc"/>
-Price <input type="text" ng-model="events.PriceDesc"/>
-contact<input type ="text" ng-model = "events.Contact"/>
-<input type="button" ng-click="saveEvents(events)" />
-</body>
-</html>
+  <div class="container">
+       <div class="row">
+       <div class="col-md-6 col-md-offset-3">
+         <div class="panel panel-success">
+           <div class="panel-heading">
+             <div class="row">
+               <div class="col-xs-12">
+                   <span>Include New Events</span>
+               </div>
+             </div>
+           </div>
+           <div class="panel-body">
+             <div class="row">
+               <div class="col-lg-12">
+                 <form id="login-form" role="form" ng-submit="saveEvents(events)" >
+                   <div class="form-group">
+                     <input type="text" name="eventname" ng-model="events.event_name"  tabindex="1" class="form-control" placeholder="Event Name" value="" required>
+                   </div>
+                   <div class="form-group">
+                     <input type="text" name="eventdescription" ng-model="events.event_desc" id="password" tabindex="2" class="form-control" placeholder="Event Description" required>
+                   </div>
+                   <div class="form-group">
+                          <textarea class="form-control" rows="3" id="textArea" ng-model = "events.PriceDesc" placeholder = "Price Desc" required></textarea>
+                      </div>
+                   <div class="form-group">
+                     <input type="text" name="contact" ng-model="events.contact" id="password" tabindex="2" class="form-control" placeholder="contact" required>
+                   </div>
+                   <div class="form-group">
+                     <div class="row">
+                       <div class="col-lg-5"></div>
+                       <div class="col-lg-6">
+                         <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="btn btn-success" value="ADD">
+                       </div>
+                     </div>
+                   </div>
+                   <span class="label label-success" ng-show="success">Successfully Added</span>
+                   <span class="label label-error" ng-show="error">Error Occured</span>
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
