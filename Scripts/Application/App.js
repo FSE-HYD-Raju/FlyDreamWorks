@@ -33,8 +33,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     templateUrl: 'Views/Home.html',
     controller: 'defaultController',
     activetab: 'home'
-  }).
-  when('/gallery', {
+  }).when('/gallery', {
+          templateUrl: 'Views/gallery.html',
+          controller: 'defaultController',
+          activetab: 'gallery'
+  }).when('/gallery', {
       templateUrl: 'Views/photos.html',
       controller: 'defaultController',
       activetab: 'gallery'

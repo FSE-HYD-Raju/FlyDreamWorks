@@ -1,0 +1,61 @@
+
+@media (max-width: 1580px) {
+    .mobile{display: none}
+    .nav { display: table-column; }
+    .menu .nav-center,
+    .nav-center { display: inline-block; float: none; margin: 0 auto; }
+    .menu .nav.right,
+    .nav.right,
+    .menu .nav.left,
+    .nav.left { height: 0; opacity: 0; visibility: hidden; }
+    .menu .link-recipes {position: relative;background: #0252aa; padding: 0 40px; color: #fff; }
+
+    .recipe-title .shell { width: 1220px; }
+
+}
+
+@media (max-width: 979px) {
+    .mobile{display: block;position: fixed;margin: 0px;padding: 0px;
+        top: 10%;box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1); }
+    .chat-icon{padding: 1.5%;}
+
+    /* Header */
+
+    .btn-menu { display: inline-block;float: left;margin: 1%;background: #0252aa;color: #fff; padding: 10px 15px;}
+    .nav.right,
+    .nav-center,
+    .nav-center,
+    .menu .nav-center,
+    .nav.left { display: none; }
+
+    .link-journal,
+    .link-title-mobile,
+    .link-recipes,
+    .nav li a { line-height: 41px; }
+
+
+}
+/* ------------------------------------------------------------ *\
+    Media - Phones
+\* ------------------------------------------------------------ */
+
+@media (max-width: 767px) {
+    html { margin-right: 0 !important; }
+    .slider-popup { width: 300px; }
+    /* Header */
+
+    .chat-icon{padding: 1.5%;}
+    .link-title-mobile { display: block; }
+
+    .link-recipes,
+    .menu .link-recipes,
+    .menu   .link-recipes,
+    .link-recipes,
+    .menu .link-recipes { padding: 0 36px; background: #0252aa; color: #fff; }
+    .link-journal { font-size: 11px; letter-spacing: 0.1em; }
+
+    .link-journal,
+    .menu .link-journal { display: none; }
+
+
+}
