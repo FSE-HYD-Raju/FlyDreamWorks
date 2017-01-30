@@ -2,25 +2,7 @@
 body {
   overflow-x:hidden;
 }
-.header {
-  list-style: none;
-  height: 2px;
-}
-.navbar{
-  box-shadow: 2px 2px 1px #888888;
-  }
-.header>li{
-  border: none;
-  cursor: pointer;
-}
-#pos{
-  margin-top: 3%;
-}
-#pos1{
-  color: lightsteelblue;
-  margin-top: -5%;
 
-}
 #BookingDateTimePicker .timepicker {
   padding-left: 12%;
   width: 43%;
@@ -60,8 +42,8 @@ cursor: pointer;
 }
 
 #menu {
-  margin-top: 0%;
-  margin-bottom: 0%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   /* overflow: hidden; */
 }
 
