@@ -88,7 +88,7 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil, addCu
 	$scope.customer = {};
 
 	var checkLogin = function(data){
-		getcustcredentials.custlogindets(data).then(function s1(res) {
+  	getcustcredentials.custlogindets(data).then(function s1(res) {
 			console.log(JSON.stringify(res.data));
 			if(res.data != "") {
 				$scope.order.cust_id = res.data[0].cust_id;
@@ -114,7 +114,22 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil, addCu
       $scope.customer.phoneNumber;
 			addCustsFact.insertcustsfun($scope.customer).then(function s1(res) {
 				console.log(JSON.stringify(res));
-        checkLogin($scope.customer);
+        // checkLogin($scope.customer);
+				getcustcredentials.custlogindets($scope.customer).then(function s1(res) {
+					console.log(JSON.stringify(res.data));
+					if(res.data != "") {
+						$scope.order.cust_id = res.data[0].cust_id;
+
+		        console.log("cn "+$scope.order.cust_id);
+
+
+					$scope.order.event_id = JSON.parse(StorageUtil.getItem("SelectedEvent")).event_id;
+					console.log(JSON.stringify($scope.order));
+					insertOrder($scope.order);
+				}
+				},function e1(res) {
+					console.log("error");
+				});
 			}, function e1(res) {
 				console.log("error");
 			});
@@ -122,11 +137,12 @@ app.controller("addOrdersCtrl",function($scope,addOrdersFact, StorageUtil, addCu
 
 		} else {
 			$scope.order.cust_id = JSON.parse(StorageUtil.getItem("UserDetails")).cust_id;
-		}
+
 
 		$scope.order.event_id = JSON.parse(StorageUtil.getItem("SelectedEvent")).event_id;
 		console.log(JSON.stringify($scope.order));
 		insertOrder($scope.order);
+	}
 	}
 
 	var insertOrder = function(order){
