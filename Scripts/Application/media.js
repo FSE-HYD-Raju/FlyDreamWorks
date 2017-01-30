@@ -2,7 +2,9 @@
  * Created by thotar on 1/13/2017.
  */
 
-        app.controller('main', function($scope, $timeout, $interval){
+var app = angular
+        .module('Gal', ['thatisuday.ng-image-gallery'])
+        .controller('main', function($scope, $timeout, $interval){
             /*  $scope.counter = 5;
              var counterIntvl = $interval(function(){
              $scope.counter = $scope.counter - 1;
@@ -134,3 +136,4 @@
                 console.warn('Gallery closed!');
             }
         })
+    ;

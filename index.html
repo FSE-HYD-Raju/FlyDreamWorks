@@ -1,98 +1,39 @@
 
 <!DOCTYPE html>
 
-<html lang="en-US" ng-app="App">
+<html ng-app="App">
 <head>
-  <title>Flydream|Wedding, Events, Designing. We Make your Dreams </title>
-  <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-  <link rel="profile" href="www.flydreamworks.tk" />
-  <link rel="pingback" href="www.flydreamworks.tk/#/" />
-  <link rel="alternate" href="http://example.com" hreflang="en-US">
-  <meta name="description" content="A photography site. Book Now for your future memories">
-  <meta name="keywords" content="Flydreamworks, FlyDreams, Photography, Dreamworks, BookOnline">
-  <meta name="author" content="Raju Tag vardan sai">
-  <meta name="robots" content="noodp"/>
-  <link rel="canonical" href="" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Fly dreams" />
-  <meta property="og:description" content="Book Your Photoshoot or Videoshoot now!. We Make your dreams" />
-  <meta property="og:url" content="www.flydreamworks.tk" />
-  <meta property="og:site_name" content="Fly dreams" />
-  <meta property="og:image" content="favicon.ico" />
-  <meta name="facebook:card" content="FlyDreamWorks" />
-  <meta name="facebook:description" content="Book Your Photoshoot or Videoshoot now!. We Make your dreams" />
-  <meta name="facebook:title" content="Flydreamworks" />
-  <meta name="facebook:site" content="www.facebook.com/Flydreamworks" />
-  <meta name="facebook:image" content="" />
-  <meta name="facebook:creator" content="" />
+  <meta charset="utf-8" />
+  <title>FlyDreams</title>
   <link href="CSS/General/animate.css" rel="stylesheet" />
   <link href="CSS/General/bootstrap.min.css" rel="stylesheet" />
   <link href="CSS/General/bootstrap-theme.min.css" rel="stylesheet" />
   <link href="CSS/General/font-awesome.min.css" rel="stylesheet" />
   <link href="CSS/Application.css" rel="stylesheet" />
-  <link rel="stylesheet" href="CSS/loader.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript">
-      $(window).load(function() {
-          $(".loader").fadeOut("slow");
-      })
-  </script>
-  <script>
-      !function() {
-          var t;
-          if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
-                  t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
-                  t.factory = function(e) {
-                      return function() {
-                          var n;
-                          return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
-                      };
-                  }, t.methods.forEach(function(e) {
-                  t[e] = t.factory(e);
-              }), t.load = function(t) {
-                  var e, n, o, i;
-                  e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
-                      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
-                      n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
-              });
-      }();
-      drift.SNIPPET_VERSION = '0.3.1';
-      drift.load('uhyghfdtmx3g');
-  </script>
-
-
-
-  <!-- End of Async Drift Code -->
 </head>
 
 <body ng-controller="defaultController" ng-cloak style="background-image:url(Images/Background1.jpg)">
-<div class="loader"><h1 id="pos"><b>Loading........!</b></h1></div>
+
   <div id="menu">
 
-    <nav class="navbar navbar-default animated fadeInDown header">
-
-
+    <div class="row">
       <!-- <div class="col-md-offset-1 col-md-2">
         <img src="Images\FdSmallLogo.jpg" >
       </div> -->
-      <ul class="nav navbar-nav animated fadeInDown header">
-        <li class="menuItems col-md-2 animated fadeInDown header">
-          <a href="" class="link-journal left" target="_self"><h3 id="pos1">Fly Dream Works</h3></a>
-        </li>
-        <li class="menuItems col-md-2 animated fadeInDown header" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
+      <div class="col-md-offset-3">
+
+        <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
           <p><i class="fa fa-home" aria-hidden="true"></i> HOME</p>
-        </li>
-        <li class="menuItems col-md-2 animated fadeInDown header " ng-click="Route('about')" ng-class="{'myhover': route.current.activetab == 'about'}">
+        </div>
+        <div class="menuItems col-md-2" ng-click="Route('about')" ng-class="{'myhover': route.current.activetab == 'about'}">
           <p><i class="fa fa-user" aria-hidden="true"></i> ABOUT</p>
-        </li>
-        <li class="menuItems col-md-2 animated fadeInDown header" ng-click="Route('contact')" ng-class="{'myhover': route.current.activetab == 'contact'}">
+        </div>
+        <div class="menuItems col-md-2" ng-click="Route('contact')" ng-class="{'myhover': route.current.activetab == 'contact'}">
           <p><i class="fa fa-address-book" aria-hidden="true"></i> CONTACT</p>
-        </li>
-        <li class="menuItems col-md-2 animated fadeInDown header" ng-click="Route('BookNow')" ng-class="{'myhover': route.current.activetab == 'BookNow'}">
+        </div>
+        <div class="menuItems col-md-2" ng-click="Route('BookNow')" ng-class="{'myhover': route.current.activetab == 'BookNow'}">
           <p><i class="fa fa-calendar" aria-hidden="true"></i> BOOK NOW</p>
-        </li>
+        </div>
         <!-- <div class="menuItems col-md-2" ng-click="Route('bookOnline')" ng-class="{'myhover': route.current.activetab == 'bookOnline'}">
       <div class="menuItems col-md-2" ng-click="Route('home')" ng-class="{'myhover': route.current.activetab == 'home'}">
         <p><i class="fa fa-home" aria-hidden="true"></i> HOME</p>
@@ -116,19 +57,17 @@
       <!-- <p><i class="fa fa-calendar" aria-hidden="true"></i> Customer Registration</p> -->
       <!-- </div> -->
 
-      <li class = "menuItemsLogin col-md-1 animated fadeInDown header">
+      <div class = "menuItemsLogin col-md-2">
         <!-- <login-tab></login-tab>  -->
         <!-- <div class = "menuItemsLogin col-md-0"> -->
           <!-- <login-tab></login-tab>  -->
 
         <loginreg-modal> </loginreg-modal>
 
-      </li>
-    </ul>
-
-  </nav>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <ng-view></ng-view>
 
